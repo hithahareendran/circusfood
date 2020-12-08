@@ -33,17 +33,19 @@
       </div>
     </nav>
     <div class="container">
-      <h1>Menu</h1>
-      <div class="list-group list-group-flush">
+      <h1 class="text-center">Menu</h1>
+      <div class="row align-items-start">
+        <div class="col-9">
+          <div class="list-group list-group-flush">
         <li class="list-group-item" aria-current="true">
           <div class="d-flex w-100 justify-content-between">
             <div>
               <h5 class="mb-1">Food Item 1</h5>
               <div class="d-flex">
-              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-              
-              <input class="form-control form-control-sm" type="number" name="number" value="0">
-                
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <div class="form-group">
+                  <input class="form-control input-sm" type="number" name="number" value="0">
+                </div>
               </div>
             </div>
             <div>
@@ -58,10 +60,10 @@
             <div>
               <h5 class="mb-1">Food Item 2</h5>
               <div class="d-flex">
-              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-              
-              <input class="form-control form-control-sm" type="number" name="number" value="0">
-                
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <div class="form-group">
+                  <input class="form-control input-sm" type="number" name="number" value="0">
+                </div>
               </div>
             </div>
             <div>
@@ -76,9 +78,10 @@
             <div>
               <h5 class="mb-1">Food Item 3</h5>
               <div class="d-flex">
-              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-              
-              <input class="form-control form-control-sm" type="number" name="number" value="0">
+                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                <div class="form-group">
+                  <input class="form-control input-sm" type="number" name="number" value="0">
+                </div>
                 
               </div>
             </div>
@@ -90,7 +93,26 @@
           
         </li>
         
+      </div>    
+        </div>
+        <div class="col-3">
+          <div id="filters">
+            <h5>Filter menu by options</span></h5>
+            <ul class="list-group">
+              <li class="list-group-item">1</li>
+              <li class="list-group-item">2</li>
+              <li class="list-group-item">3</li>
+              <li class="list-group-item">4</li>
+              <li class="list-group-item">5</li>
+            </ul>
+            <h5 class="mt-5">Your order</h5>
+            <ul class="list-group" id="order">
+              <li class="list-group-item">Should appear above the filters</li>
+            </ul>
+          </div>
+        </div>
       </div>
+      
 
     </div>
 
