@@ -8,7 +8,7 @@ function createNav() {
     brand.attr("href", "index.html");
     let brandImg = $("<img>");
     brandImg.addClass("d-inline-block align-top");
-    brandImg.attr({ "src": "img/logo.png", "width":"80"});
+    brandImg.attr({ "src": "img/logo2.jpeg", "width":"80"});
 
     let navbarToggler = $("<button>").addClass("navbar-toggler");
     
