@@ -1,125 +1,167 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>The Food Circus</title>
-  </head>
-  <body>
-    <!-- Image and text -->
-    
-    <div class="container">
-      <h1 class="text-center mb-4">Menu</h1>
-      <div class="row align-items-start">
-        <div class="col-9">
-          <div class="list-group list-group-flush">
-        <li class="list-group-item" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <div>
-              <div class="d-flex">
-                  <p class="mb-1 align-self-center ingredients fst-italic">Chicken, rice, chili, green onions, garlic</p>
-                <div>
-                  
-                  <h3 class="mb-1">Food Item 1</h3>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+    integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <!-- specific css with customized tab link -->
+  <link rel="stylesheet" type="text/css" href="css/menu.css">
+
+  <!-- common js for nav bar -->
+  <script src="js/create-menu.js"></script>
+  <!-- specific js with all functiona and initial load method -->
+  <script src="js/menu.js"></script>
+  <title>The Food Circus</title>
+
+  <script>
+
+  </script>
+</head>
+
+<body>
+  <!-- templates -->
+  <template id="template-menu-item">
+    <div class="col shadow p-3 bg-white rounded menu-item">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img id="itemImage" src="img/item1.jpeg" class="img-fluid rounded">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title" id="name">Chinese Noodles</h5>
+              <div class="row">
+                <div class="col-md-10">
+                  <p class="align-self-center ingredients fst-italic" id="content">Chicken, nudles, chili, green onions,
+                    garlic</p>
                 </div>
-                <div class="form-group align-self-end">
-                  <input class="form-control input-sm" type="number" name="number" value="0">
+                <div class="col-md-2">
+                  <h6 class="text-end" id="price">250Kr</h6>
+                </div>
+              </div>
+              <p class="card-text" id="info">Chinese noodles with chicken and green vegitables made with soya and tomato
+                sause.</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="card-text"><small class="text-muted" id="stars"></small>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <a href="#" class="btn btn-primary stretched-link" id="order">Order item</a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div>
-              <img src="img/dish1_small.jpg" class="rounded-circle" width="150">
-              <p class="text-center fw-bold">145 kr</p>
-            </div>
-          </div>
-          
-        </li>
-        <li class="list-group-item" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <div>
-              <div class="d-flex">
-                <p class="mb-1 align-self-center ingredients fst-italic">Chicken, rice, chili, green onions, garlic</p>
-                <div>
-                  
-                  <h3 class="mb-1">Food Item 2</h3>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                </div>
-                <div class="form-group align-self-end">
-                  <input class="form-control input-sm" type="number" name="number" value="0">
-                </div>
-              </div>
-            </div>
-            <div>
-              <img src="img/dish2_small.jpg" class="rounded-circle" width="150">
-              <p class="text-center fw-bold">145 kr</p>
-            </div>
-          </div>
-          
-        </li>
-        <li class="list-group-item" aria-current="true">
-          <div class="d-flex w-100 justify-content-between">
-            <div>
-              <div class="d-flex">
-                <p class="mb-1 align-self-center ingredients fst-italic">Chicken, rice, chili, green onions, garlic</p>
-                <div>
-                  
-                  <h3 class="mb-1">Food Item 3</h3>
-                  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                </div>
-                <div class="form-group align-self-end">
-                  <input class="form-control input-sm" type="number" name="number" value="0">
-                </div>
-                
-              </div>
-            </div>
-            <div>
-              <img src="img/dish3_small.jpg" class="rounded-circle" width="150">
-              <p class="text-center fw-bold">145 kr</p>
-            </div>
-          </div>
-          
-        </li>
-        
-      </div>    
-        </div>
-        <div class="col-3">
-          <div id="filters">
-            <h5>Filter menu by options</span></h5>
-            <ul class="list-group">
-              <li class="list-group-item">1</li>
-              <li class="list-group-item">2</li>
-              <li class="list-group-item">3</li>
-              <li class="list-group-item">4</li>
-              <li class="list-group-item">5</li>
-            </ul>
-            <h5 class="mt-5">Your order</h5>
-            <ul class="list-group" id="order">
-              <li class="list-group-item">Should appear above the filters</li>
-            </ul>
           </div>
         </div>
       </div>
-      
-
     </div>
+  </template>
 
-    <!-- Optional JavaScript; choose one of the two! -->
+  <template id="template-cart-item">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <img id="itemImage" src="img/item1.jpeg" width="30px" height="30px" class="img-fluid  rounded-circle">
+      <div  id="itemName">asdf</div>
+      <span class="badge bg-primary rounded-pill" id="itemCount">1</span>
+    </li>
+  </template>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-    <script src="js/create-menu.js"></script>
-    <script>window.onload = () => createNav()</script>
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-    -->
-  </body>
+
+  <!-- Image and text -->
+
+  <div class="container-fluid">
+    <h2 class="text-center mb-4">Explore Our Foods</h2>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="row">
+
+            <!-- refered css from https://bootstrapious.com/p/bootstrap-vertical-tabs -->
+            <!-- Tabs nav -->
+            <div class="nav flex-column nav-pills nav-pills-custom" role="tablist" aria-orientation="vertical">
+              <a class="nav-link mb-3 p-3 shadow active" id="main" href="#" onclick="openTab(event,'main-content')">
+                <i class="fa fa-pizza-slice"></i>
+                <span class="font-weight-bold small text-uppercase">Main Course</span></a>
+
+              <a class="nav-link mb-3 p-3 shadow" id="veg" href="#" onclick="openTab(event, 'veg-content')">
+                <i class="fas fa-carrot"></i>
+                <span class="font-weight-bold small text-uppercase">Vegiterian Menu</span></a>
+
+              <a class="nav-link mb-3 p-3 shadow" id="drink" href="#" onclick="openTab(event, 'drink-content')">
+                <i class="fas fa-cocktail"></i>
+                <span class="font-weight-bold small text-uppercase">Drinks Menu</span></a>
+
+              <a class="nav-link mb-3 p-3 shadow" id="child" href="#" onclick="openTab(event,'child-content')">
+                <i class="fas fa-hotdog"></i>
+                <span class="font-weight-bold small text-uppercase">Child Menu</span></a>
+            </div>
+          </div>
+
+          <!-- filter on ingrdiants-->
+          <div class="row">
+            <form>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Filter" oninput="filterIngrediants(event)">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- cart -->
+          <div class="row">
+            <h5 class="mt-5">Your order</h5>
+            <ul class="list-group" id="itemList">
+              <li class="list-group-item d-flex justify-content-between align-items-center" id="itemName">
+                <div>Empty</div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+
+        <div class="col-md-9">
+          <!-- Tabs content -->
+          <div class="tab-content" id="main-content">
+            <div class="row row-cols-1 row-cols-md-1 g-4" id="main-cource-menu">
+            </div>
+          </div>
+
+          <div class="tab-content" id="veg-content">
+            <div class="row row-cols-1 row-cols-md-1 g-4" id="veg-cource-menu">
+            </div>
+          </div>
+
+          <div class="tab-content" id="drink-content">
+            <div class="row row-cols-1 row-cols-md-1 g-4" id="drink-cource-menu">
+            </div>
+          </div>
+
+          <div class="tab-content" id="child-content">
+            <div class="row row-cols-1 row-cols-md-1 g-4" id="child-cource-menu">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
 </html>
