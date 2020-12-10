@@ -69,10 +69,16 @@
   </template>
 
   <template id="template-cart-item">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <img id="itemImage" src="img/item1.jpeg" width="30px" height="30px" class="img-fluid  rounded-circle">
-      <div  id="itemName">asdf</div>
-      <span class="badge bg-primary rounded-pill" id="itemCount">1</span>
+    <li class="list-group-item container-fluid">
+      <div class="row">
+        <div class="col-md-2"> <img id="itemImage" src="img/item1.jpeg" width="30px" height="30px"
+            class="img-fluid  rounded-circle"></div>
+        <div class="col-md-5" id="itemName">asdf</div>
+        <div class="col-md-2" id="itemPrice">0</div>
+        <div class="col-md-3"><span class="badge bg-secondary rounded-pill" id="itemAdd">+</span>
+          <span class="badge bg-primary rounded-pill" id="itemCount">1</span>
+          <span href="#" class="badge bg-secondary rounded-pill" id="itemRemove">-</span></div>
+      </div>
     </li>
   </template>
 
