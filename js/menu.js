@@ -31,6 +31,7 @@ const items = [
 
 
 //https://www.w3schools.com/tags/tag_template.asp
+//gets the menu template and modify value,  and add to the tab with the same group name
 function addItemsToMenu() {
   items.forEach(item => {
     let tab = document.getElementById(item.group);
@@ -48,6 +49,7 @@ function addItemsToMenu() {
   })
 }
 
+//save item to local storage when order button press
 function order(event, itemId, itemName, itemImage, itemPrice) {
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
@@ -67,6 +69,7 @@ function order(event, itemId, itemName, itemImage, itemPrice) {
   return false;
 }
 
+// get the items from local storage and add to cart
 function fillCart() {
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
@@ -93,6 +96,7 @@ function fillCart() {
   })
 }
 
+//increase the count of the item on local storage
 function addCount(itemId) {
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
   let existingItem = selected.find(item => item.itemId === itemId);
@@ -101,6 +105,7 @@ function addCount(itemId) {
   fillCart();
 }
 
+//remove or reduce the item count on local storage
 function removeCount(itemId) {
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
   let existingItem = selected.find(item => item.itemId === itemId);
@@ -115,6 +120,7 @@ function removeCount(itemId) {
 }
 
 //https://www.w3schools.com/howto/howto_js_vertical_tabs.asp
+//change the display of selected tab to block,  and all remaining as hidden
 function openTab(event, tabname) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tab-content");
