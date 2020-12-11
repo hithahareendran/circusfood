@@ -150,14 +150,19 @@ function filterIngrediants(event) {
   }
 }
 
+function onLoad()
+{
+ //adding navigation bar
+ createNav();
+ // adding menu items to tab content
+ addItemsToMenu();
+ // calling first tab item as clicked
+ document.getElementById("main").click();
+ //fill cart from localstorage
+ fillCart();
+}
+
 //calling the initital methods
 window.onload = () => {
-  //adding navigation bar
-  createNav();
-  // adding menu items to tab content
-  addItemsToMenu();
-  // calling first tab item as clicked
-  document.getElementById("main").click();
-  //fill cart from localstorage
-  fillCart();
+  onLoad();
 }
