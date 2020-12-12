@@ -29,7 +29,8 @@ function createNav() {
         "Shows":"performances.html", 
         "Menu":"menu.html", 
         "Gallery":"gallery.html", 
-        "Contact Us":"contact-us.html"
+        "Contact Us":"contact-us.html",
+        "About Us":"about-us.html"
     };
     const path = location.pathname;
     const navLink = path.substring(1).slice(path.lastIndexOf('/'))
