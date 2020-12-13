@@ -15,10 +15,10 @@
 
   <!-- specific css with customized tab link -->
   <!-- refered css from https://bootstrapious.com/p/bootstrap-vertical-tabs -->
-   <link rel="stylesheet" type="text/css" href="css/menu.css"> 
-  <!-- common js for nav bar -->
-  <script src="js/create-menu.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/menu.css">
+
   <!-- specific js with all functiona and initial load method -->
+  <script src="js/create-menu.js"></script>
   <script src="js/menu.js"></script>
   <title>The Food Circus</title>
 
@@ -35,7 +35,7 @@
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
-            <img id="itemImage" src="img/item1.jpeg" class="img-fluid rounded">
+            <img id="itemImage" src="img/item1.jpeg" class="img-fluid rounded custom-menu-image">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -79,7 +79,8 @@
         <div class="col-md-2" id="itemPrice">0</div>
         <div class="col-md-4"><span class="badge bg-secondary rounded-pill" id="itemAdd">+</span>
           <span class="badge bg-primary rounded-pill" id="itemCount">1</span>
-          <span href="#" class="badge bg-secondary rounded-pill" id="itemRemove">-</span></div>
+          <span href="#" class="badge bg-secondary rounded-pill" id="itemRemove">-</span>
+        </div>
       </div>
     </li>
   </template>
@@ -88,7 +89,7 @@
   <!-- Main body starts from here -->
 
   <div class="container-fluid">
-    <h2 class="text-center mb-4">Explore Our Foods</h2>
+    <h2 class="text-center display-6">Explore Our Foods</h2>
 
     <div class="container-fluid">
       <!--  tab container https://www.w3schools.com/howto/howto_js_vertical_tabs.asp-->
@@ -133,11 +134,12 @@
           <!-- cart -->
           <div class="row">
             <h5 class="mt-5">Your order</h5>
-            <ul class="list-group" id="itemList">
+            <ul class="list-group mb-3" id="itemList">
               <li class="list-group-item d-flex justify-content-between align-items-center" id="itemName">
                 <div>Empty</div>
               </li>
             </ul>
+            <div class="text-center"><button type="button"  id="checkout-button" class="btn btn-primary invisible" onclick="doCheckout()">Checkout</button></div>
           </div>
 
         </div>
