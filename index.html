@@ -8,18 +8,39 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/added.css">
+    
+      <style>
+      .carousel-inner {
+        background:rgb(0, 0, 0);
+      }
+      .carousel-inner img { 
+        width:100%; min-height: 500px;
+        
+      }
+      .carousel-caption {
+        position: absolute; /* Position the background text */
+        bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+        background: rgb(0, 0, 0); /* Fallback color */
+        background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+        color: #f1f1f1; /* Grey text */
+        padding: 20px; /* Some padding */
+        }
 
+      
+      </style>  
+     
     <title>The Food Circus</title>
   </head>
   <body>
     <!--Navbar-->
     <div class= "nav_container"></div>
     <h1 class="text-center mb-4">Food and Circus Entertainment</h1> 
-    <div class="container"></div>
+    <main role= "main">
+    <!-- <div class="container"></div> -->
 
    
     
-    
+    </main>
     <!-- TODO: Change back to slim jquery.js when not using ajax-->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>  
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
@@ -29,7 +50,7 @@
     <script src="./common/common.js"> </script>
     <script>
     // loading elements for landing page 
-    $(".container").load("./carousel.html");
+    $("main").load("./carousel.html");
     </script>
   
   </body>
