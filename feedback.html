@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="name">Name:</label>
                             <div class="col-sm-10">
-                                <input type="name" class="form-control" id="name" placeholder="Enter your Name" name="name" >
+                                <input type="name" class="form-control" id="name" placeholder="Enter your Name" name="name">
                             </div>
                         </div>
                         <div class="form-group">
@@ -93,16 +93,16 @@
                             <label class="control-label col-sm-2" for="food">Food Quality:</label>
                             <div class="col-sm-10">
                                 <label class="radio-inline">
-                                        <input type="radio" name="foodoptradio" checked id="excellent">Excellent
+                                        <input type="radio" name="foodoptradio" checked id="excellentfood">Excellent
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="foodoptradio" id="good">Good
+                                        <input type="radio" name="foodoptradio" id="goodfood">Good
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="foodoptradio" id="average">Average
+                                        <input type="radio" name="foodoptradio" id="averagefood">Average
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="foodoptradio" id="poor">Dissatisfied
+                                        <input type="radio" name="foodoptradio" id="poorfood">Dissatisfied
                                       </label>
                             </div>
                         </div>
@@ -110,16 +110,16 @@
                             <label class="control-label col-sm-2" for="Show">Describe our show:</label>
                             <div class="col-sm-10">
                                 <label class="radio-inline">
-                                        <input type="radio" name="showoptradio" checked>Excellent
+                                        <input type="radio" name="showoptradio" checked id="excellentshow">Excellent
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="showoptradio">Good
+                                        <input type="radio" name="showoptradio" id="goodshow">Good
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="showoptradio">Average
+                                        <input type="radio" name="showoptradio" id="averageshow">Average
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="showoptradio">Dissatisfied
+                                        <input type="radio" name="showoptradio" id="poorshow">Dissatisfied
                                       </label>
                             </div>
                         </div>
@@ -138,21 +138,21 @@
                             <label class="control-label col-sm-2" for="overall">OverAll Experience:</label>
                             <div class="col-sm-10">
                                 <label class="radio-inline">
-                                        <input type="radio" name="overall" checked>Excellent
+                                        <input type="radio" name="overall" checked id="excellent">Excellent
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="overall">Good
+                                        <input type="radio" name="overall" id="Good">Good
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="overall">Average
+                                        <input type="radio" name="overall" id="Average">Average
                                       </label>
                                 <label class="radio-inline">
-                                        <input type="radio" name="overall">Dissatisfied
+                                        <input type="radio" name="overall" id="Dissatisfied">Dissatisfied
                                       </label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm" for="comments">Any comments,questions or suggestions?</label>
+                            <label class="control-label col-sm" for="comments" id="comments">Any comments,questions or suggestions?</label>
                             <div class="col-sm-10 pb-cmnt-textarea">
                                 <textarea id="comments" name="comments" placeholder="Write your comments.." style="height:200px;width: 850px;"></textarea>
                             </div>
@@ -160,7 +160,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="button" class="btn btn-success" onclick="submitfeedback()">Submit</button>
+                                <button type="button" class="btn btn-success" onclick="return(submitfeedback())">Submit</button>
                             </div>
                         </div>
                 </form>
