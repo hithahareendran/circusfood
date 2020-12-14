@@ -39,7 +39,7 @@ export function calendar(year = null, month = null) {
     // Set Sunday to last day in week (7)
     let dayInWeek = date.getDay() == 0 ? 7 : date.getDay();
     console.log("day in week ", dayInWeek);
-    for (let i = 0; i < daysInMonth + dayInWeek; i++) {
+    for (let i = 1; i < daysInMonth + dayInWeek; i++) {
         
         if (i % 7 == 1 || i == 1) 
             $("<tr class='text-center'>").appendTo(table);            
