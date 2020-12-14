@@ -1,0 +1,36 @@
+header-with-menu .menuContainer{
+    display: flex;
+    justify-content: space-between;
+}
+header-with-menu .logo{
+    margin-left: 20px;
+}
+header-with-menu{
+    display: block;
+    position: fixed;
+    top:0;
+    right:0;
+    width: 100%;
+    background-color: #a493c0;
+    padding: 10px;
+}
+header-with-menu nav a:visited,
+header-with-menu nav a:link{
+    color: #fff;
+    text-decoration: none;
+}
+header-with-menu nav a:hover{
+    color: #0C3653;
+}
+header-with-menu nav a:active{
+    color: #255A7E;
+}
+header-with-menu nav > ul {
+display: inline;
+padding: 0;
+}
+header-with-menu nav> ul > li{
+    display: inline-block;
+    list-style: none;
+    margin: 0 5px 0 5px;
+}
