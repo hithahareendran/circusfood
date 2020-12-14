@@ -52,12 +52,8 @@ export function calendar(year = null, month = null) {
     for (let i = 0; i < daysInMonth + dayInWeek; i++) {
         if (dates.includes(getDateString(date, i))) {
             
-            console.log('i ', i)
-            let d = new Date(getDateString(date, i)).getDate();
-            console.log('date : ', d);
             $("td").filter(function(){
-                return parseInt($(this).text()) == d; 
-                console.log('all td ', parseInt($(this).text()));
+                return parseInt($(this).text()) == i; 
                 
             }).addClass("bg-info text-white border-2 show-date").click(function() {
                 filterShowsByDate(getDateString(date, i));
