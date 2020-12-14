@@ -29,16 +29,30 @@ function createNav() {
         "Shows":"performances.html", 
         "Menu":"menu.html", 
         "Gallery":"gallery.html", 
-        "Contact Us":"contact-us.html"
+        "Contact Us":"contact-us.html",
+        "About Us":"about-us.html"
     };
+    const path = location.pathname;
+    const navLink = path.substring(1).slice(path.lastIndexOf('/'))
+    //navLink = navLink.charAt(0).toUpperCase() + navLink.slice(1); // URL without .html
+    //console.log('type of path ', typeof(location.pathname));
+    console.log('navLink ', navLink);
+    //return;
+    $("nav-link").removeClass('active');
     for( const [key, value] of Object.entries(links) ) {
         let li = $('<li>').addClass("nav-item");
-        let link = $('<a class="nav-link" aria-current="page">');
+        let link = $('<a>').addClass("nav-link");
+        
         link.attr({"href":value, "aria-current": "page"});
         link.text(key)
+        if (navLink == value) {
+            link.addClass("active");
+            console.log('link ', link);
+        } 
+    
         link.appendTo(li);
         li.appendTo(ul);
-    };
+    }
     brandImg.appendTo(brand);
     brand.appendTo(nav);
     navbarToggler.appendTo(nav);
