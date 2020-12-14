@@ -52,7 +52,7 @@ function createNav() {
     
         link.appendTo(li);
         li.appendTo(ul);
-    };
+    }
     brandImg.appendTo(brand);
     brand.appendTo(nav);
     navbarToggler.appendTo(nav);
