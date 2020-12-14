@@ -39,24 +39,27 @@ export function calendar(year = null, month = null) {
     // Set Sunday to last day in week (7)
     let dayInWeek = date.getDay() == 0 ? 7 : date.getDay();
     console.log("day in week ", dayInWeek);
-    for (let i = 1; i < daysInMonth + dayInWeek; i++) {
+    for (let i = 0; i < daysInMonth + dayInWeek; i++) {
         
-        if (i % 7 == 1 || i == 1) {
+        if (i % 7 == 1 || i == 1) 
             $("<tr class='text-center'>").appendTo(table);            
-            if (i < dayInWeek )
-                $("<td>").appendTo($('tr').last());
-            else 
-                $("<td>" + (i + 1 - dayInWeek) + "</td>").appendTo($('tr').last());
-        } else {
-            if (i < dayInWeek )
-                $("<td>").appendTo($('tr').last());
-            else 
-                $("<td>" + (i + 1 - dayInWeek) + "</td>").appendTo($('tr').last());
-        }
-        if (dates.includes( getDateString(date, i) )) {
-            console.log('date string: ', getDateString(date, i));
-            $("td").last().addClass("bg-info text-white border-2 show-date");
-            $("td").last().click(function() {
+            
+        if (i < dayInWeek )
+            $("<td>").appendTo($('tr').last());
+        else 
+            $("<td>" + (i + 1 - dayInWeek) + "</td>").appendTo($('tr').last());
+    }
+    for (let i = 0; i < daysInMonth + dayInWeek; i++) {
+        if (dates.includes(getDateString(date, i))) {
+            
+            console.log('i ', i)
+            let d = new Date(getDateString(date, i)).getDate();
+            console.log('date : ', d);
+            $("td").filter(function(){
+                return parseInt($(this).text()) == d; 
+                console.log('all td ', parseInt($(this).text()));
+                
+            }).addClass("bg-info text-white border-2 show-date").click(function() {
                 filterShowsByDate(getDateString(date, i));
             });
         } 
@@ -77,7 +80,6 @@ const getDaysInMonth = function (year, month) {
     return new Date(year, month, 0).getDate();
 };
 const getDateString = function(d, i) {
-    return `${d.getFullYear()}-${d.getMonth() < 10 
-        ? '0' + (d.getMonth() + 1) 
-        : d.getMonth() + 1}-${i + 1 < 10 ? '0' + i : i}`;
+    return `${d.getFullYear()}-${d.getMonth() < 10 ? '0' + (d.getMonth() + 1) 
+            : d.getMonth() + 1}-${i + 1 < 10 ? '0' + i : i}`;
 };

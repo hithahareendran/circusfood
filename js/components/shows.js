@@ -133,7 +133,7 @@ export const shows = [
     },
     {
         id: "8",
-        date: '2021-06-07',
+        date: '2021-06-05',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -146,7 +146,7 @@ export const shows = [
 
     {
         id: "8",
-        date: '2021-07-07',
+        date: '2021-06-04',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
