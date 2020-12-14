@@ -1,15 +1,6 @@
-/* const shows = [
-    {id: "1", title: 'Amazing show', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: '' },
-    {id: "2", title: 'Fantastic show', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: "" },
-    {id: "3", title: 'Magic Evening', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: "" },
-    {id: "4", title: 'Show name', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: "" },
-    {id: "5", title: 'Show name', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: "" },
-    {id: "6", title: 'Show name', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: "" },
-    {id: "7", title: 'Shown name', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: "" },
-    {id: "8", title: 'Show name', description: '', thumb: 'item1.jpeg', rating: 5, price: '900', category: "acrobatic", date: '', artist: "" }
-]; */
 import { shows, categories } from './components/shows.js';
 import { calendar } from './components/calendar.js';
+
 function addShows() {
     shows.forEach(show => {
         const list = $('#showList');
@@ -34,10 +25,11 @@ function categoriesAsTabs(categories) {
     ul.append(li);
     categories.forEach(c => {
         let li = $('<li class="nav-item">');
-        let link = $(`<a href="#" class="nav-link mb-3 p-3 shadow" id="${c.name}" onclick="openTab(event, '${c.name}-content')">`);
-        const icon = $(c.icon);
+        let link = $(`<a href="#" class="d-flex justify-content-between nav-link mb-3 p-3 shadow" id="${c.name}" onclick="openTab(event, '${c.name}-content')">`);
+        const icon = $(c.icon).addClass("rounded-pill");
+        icon.attr("width", "60");
         console.log('name ', c.name);
-        const span = $('<span>'+c.name+'</span>');
+        const span = $('<p>'+c.name+'</p>');
         
         icon.appendTo(link);
         span.appendTo(link);
@@ -53,16 +45,17 @@ function categoriesAsTabs(categories) {
 function openTab(event, tabname) {
     $(".show-item").attr("style", "");
     var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tab-content");
+    tabcontent = $(".tab-content");
     for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+        tabcontent[i].css("display", "none");
     }
-    tablinks = document.getElementsByClassName("nav-link");
+    tablinks = $(".nav-link");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].removeClass("active");
     }
     document.getElementById(tabname).style.display = "block";
     event.currentTarget.className += " active";
+    console.log('target ', event.currentTarget);
     return false;
 }
 // using modules

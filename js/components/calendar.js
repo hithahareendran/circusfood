@@ -54,6 +54,7 @@ export function calendar(year = null, month = null) {
                 $("<td>" + (i + 1 - dayInWeek) + "</td>").appendTo($('tr').last());
         }
         if (dates.includes( getDateString(date, i) )) {
+            console.log('date string: ', getDateString(date, i));
             $("td").last().addClass("bg-info text-white border-2 show-date");
             $("td").last().click(function() {
                 filterShowsByDate(getDateString(date, i));

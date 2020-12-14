@@ -97,6 +97,42 @@ export const shows = [
     },
     {
         id: "8",
+        date: '2021-03-12',
+        title: 'Show name',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
+        image: '',
+        thumb: 'circus2_small.jpg',
+        rating: 5,
+        price: '900',
+        category: 4,
+        artist: ""
+    },
+    {
+        id: "8",
+        date: '2021-03-20',
+        title: 'Show name',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
+        image: '',
+        thumb: 'circus2_small.jpg',
+        rating: 5,
+        price: '900',
+        category: 4,
+        artist: ""
+    },
+    {
+        id: "8",
+        date: '2021-03-26',
+        title: 'Show name',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
+        image: '',
+        thumb: 'circus2_small.jpg',
+        rating: 5,
+        price: '900',
+        category: 4,
+        artist: ""
+    },
+    {
+        id: "8",
         date: '2021-06-07',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
@@ -106,7 +142,45 @@ export const shows = [
         price: '900',
         category: 4,
         artist: ""
+    },
+
+    {
+        id: "8",
+        date: '2021-07-07',
+        title: 'Show name',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
+        image: '',
+        thumb: 'circus2_small.jpg',
+        rating: 5,
+        price: '900',
+        category: 4,
+        artist: ""
+    },
+    {
+        id: "8",
+        date: '2022-01-11',
+        title: 'Show name',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
+        image: '',
+        thumb: 'circus2_small.jpg',
+        rating: 5,
+        price: '900',
+        category: 4,
+        artist: ""
+    },
+    {
+        id: "8",
+        date: '2023-01-17',
+        title: 'Show name',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
+        image: '',
+        thumb: 'circus2_small.jpg',
+        rating: 5,
+        price: '900',
+        category: 4,
+        artist: ""
     }
+    
 
 ];
 export const categories = [
