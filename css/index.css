@@ -7,7 +7,7 @@ body {
   .bg {
     background-image: src="./img/Background-dark-test.jpg";
     height: 100%;
-  
+
     /* Center and scale the image */
     background-position: center;
     background-repeat: no-repeat;
