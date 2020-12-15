@@ -1,6 +1,21 @@
 import { shows, categories } from './components/shows.js';
 import { calendar } from './components/calendar.js';
 
+var booking = {
+    id:  '',
+    seatings: '',
+    category: '',
+    set id(id) {
+        this.id = id;
+    },
+    set seatings(num) {
+        this.seatings = num;
+    },
+    set category(cat) {
+        this.category = cat;
+    }
+}
+
 function addShows() {
     shows.forEach(show => {
         const list = $('#showList');
@@ -23,6 +38,23 @@ function addShows() {
 $(".quantity-button").click(() => {
     //console.log('button clicked ', event.target);
     $("#seating-quantity").text(event.target.innerText);
+    $(".seatings").removeClass('d-none');
+});
+$("#more-seatings-button").click(() => {
+    console.log('clicked asd')
+    $("#add-seatings").removeClass('d-none');
+});
+
+$("#quantity").change(() => {
+    console.log($(this).val())
+    booking.seatings = $("#seating-quantity").text(event.target.value);
+
+});
+
+$("#go-to-payment").click(() => {
+    console.log(booking);
+    let person = $("#seating-quantity").text();
+
 });
 
 
@@ -34,7 +66,6 @@ showModal.addEventListener('show.bs.modal', function (event) {
     // Extract info from data-bs-* attributes
     let showId = button.getAttribute('data-bs-id');
     let show = shows.find(show => show.id == showId);
-    
     console.log('show ', show);
     console.log('showId', showId);
     // If necessary, you could initiate an AJAX request here
@@ -44,23 +75,29 @@ showModal.addEventListener('show.bs.modal', function (event) {
     let modalTitle = showModal.querySelector('.modal-title')
     let alert = showModal.querySelector('.alert')
     alert.innerHTML = `<h5>${show.title}</h5><p>${show.description}</p>`;
+    $('.show-card').removeClass("bg-success");
     
     //$('.booking-button').removeAttr('data-id');
     //$('.booking-button').attr('data-id', showId);
     //$('.booking-button').click(() => console.log(showId));
     
-    $(".booking-button").click(() => {
+    $(".booking-button").click((e) => {
+        const button = $(e.target);
         let seatings = $("#seating-quantity").text();
-        let category = $(event.target).data('category');
-    
-        console.log("seatings ", seatings);
-        console.log("category ", category);
-        console.log("show id ", showId);
+        let category = button.data('category');
+
+        $('.show-card').removeClass("bg-success");
+        $("#"+category).addClass("bg-success");
+        let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase(); 
+        let booking = {orderId, showId, seatings, category};
+        
+        localStorage.setItem('order', JSON.stringify(booking));
+        localStorage.setItem('test', 1);
     });
     
     modalTitle.textContent = 'Seating booking for ' + show.date + ' ' + show.time
 });
-showModal.addEventListener('hide.bs.modal', function (event) {
+showModal.addEventListener('hide.bs.modal', function(event) {
     console.log('closing modal');
     
     document.querySelectorAll(".booking-button").forEach(btn => removeEventListener('click', function(){}));
