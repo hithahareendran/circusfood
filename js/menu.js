@@ -42,15 +42,20 @@ function addItemsToMenu() {
     instance.getElementById('info').innerHTML = item.info;
     instance.getElementById('content').innerHTML = item.content;
     instance.getElementById('itemImage').setAttribute('src', 'img/' + item.image);
-    instance.getElementById("order").addEventListener('click', (event) => order(event, item.id, item.title, item.image, item.price));
-    for (let i = 0; i < item.rating; i++)
-      instance.getElementById("stars").innerHTML += ' <a href="#"><i class="fa fa-star"></i></a>';
+    instance.getElementById("order").addEventListener('click', () => order(item.id, item.title, item.image, item.price));
+    for (let i = 0; i < 5; i++) {
+      if (i < item.rating)
+        instance.getElementById("stars").innerHTML += ' <a href="#"><i class="fas fa-star"></i></a>';
+      else
+        instance.getElementById("stars").innerHTML += ' <a href="#"><i class="far fa-star"></i></a>';
+    }
+
     tab.appendChild(instance);
   })
 }
 
 //save item to local storage when order button press
-function order(event, itemId, itemName, itemImage, itemPrice) {
+function order(itemId, itemName, itemImage, itemPrice) {
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
 
@@ -80,7 +85,7 @@ function fillCart() {
 
   //clean the cart
   document.getElementById('itemList').innerHTML = "";
-  document.getElementById("checkout-button").className='btn btn-primary invisible';
+  document.getElementById("checkout-button").className = 'btn btn-primary invisible button';
   if (!selected || !selected.length)
     document.getElementById('itemList').innerHTML = '<li class="list-group-item"><div>Empty</div></li>';
   //add each menu item to cart
@@ -94,7 +99,7 @@ function fillCart() {
     instance.getElementById("itemAdd").addEventListener('click', (event) => addCount(item.itemId));
     instance.getElementById("itemRemove").addEventListener('click', (event) => removeCount(item.itemId));
     document.getElementById('itemList').appendChild(instance);
-    document.getElementById("checkout-button").className='btn btn-primary visible';
+    document.getElementById("checkout-button").className = 'btn btn-primary visible button';
   })
 
 }
@@ -153,18 +158,39 @@ function filterIngrediants(event) {
   }
 }
 
-function doCheckout()
-{
+function doCheckout() {
   window.location.assign("/payment.html");
 }
 
+
+//add image to carousel
+function addItemToCarousel()
+{
+  items.forEach(item=>{
+    const template = document.getElementById('template-carousel-image');
+    const instance = document.importNode(template.content, true)
+    instance.getElementById('carousel-image').setAttribute('src', 'img/' + item.image);
+    instance.getElementById('carousel-header').innerHTML = item.title;
+    // instance.getElementById("hover-container").addEventListener('click', () => orderFavouriteItem(item.id));
+    document.getElementById('carousel-'+item.group).appendChild(instance);
+  });
+}
+
+// function orderFavouriteItem(id)
+// {
+//   let item = items.find(item=>item.id===id);
+//   order(item.id, item.title, item.image, item.price)
+// }
+
 //calling the initital methods
 window.onload = () => {
-  createNav(); 
+  createNav();
   // adding menu items to tab content
   addItemsToMenu();
   // calling first tab item as clicked
   document.getElementById("main").click();
   //fill cart from localstorage
   fillCart();
+  //add images to carousel with overlay
+  addItemToCarousel();
 }

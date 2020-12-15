@@ -12,10 +12,60 @@ function addShows() {
         $(instance).find('#date').text(show.date);
         //$(instance).find('content').text(show.content);
         $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
+        $(instance).find('#modal-button').attr('data-bs-id', show.id);
+        /* $(instance).find('#modal-button').click(() => {
+            console.log('clicker');
+            openModal();
+        }); */
         list.append(instance);
     });
 }
+$(".quantity-button").click(() => {
+    //console.log('button clicked ', event.target);
+    $("#seating-quantity").text(event.target.innerText);
+});
 
+
+let showModal = document.getElementById('showModal');
+showModal.addEventListener('show.bs.modal', function (event) {
+    // Button that triggered the modal
+    
+    let button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    let showId = button.getAttribute('data-bs-id');
+    let show = shows.find(show => show.id == showId);
+    
+    console.log('show ', show);
+    console.log('showId', showId);
+    // If necessary, you could initiate an AJAX request here
+    // and then do the updating in a callback.
+    //
+    // Update the modal's content.
+    let modalTitle = showModal.querySelector('.modal-title')
+    let alert = showModal.querySelector('.alert')
+    alert.innerHTML = `<h5>${show.title}</h5><p>${show.description}</p>`;
+    
+    //$('.booking-button').removeAttr('data-id');
+    //$('.booking-button').attr('data-id', showId);
+    //$('.booking-button').click(() => console.log(showId));
+    
+    $(".booking-button").click(() => {
+        let seatings = $("#seating-quantity").text();
+        let category = $(event.target).data('category');
+    
+        console.log("seatings ", seatings);
+        console.log("category ", category);
+        console.log("show id ", showId);
+    });
+    
+    modalTitle.textContent = 'Seating booking for ' + show.date + ' ' + show.time
+});
+showModal.addEventListener('hide.bs.modal', function (event) {
+    console.log('closing modal');
+    
+    document.querySelectorAll(".booking-button").forEach(btn => removeEventListener('click', function(){}));
+
+});
 //const categories = [...new Set(shows.map(show => show.category))];
 console.log('categories ', categories);
 function categoriesAsTabs(categories) {

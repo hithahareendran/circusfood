@@ -1,7 +1,8 @@
 export const shows = [
     { 
         id: "1", 
-        date: '2021-02-05', 
+        date: '2021-02-05',
+        time: '6:20', 
         title: 'Amazing show', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -9,11 +10,13 @@ export const shows = [
         rating: 5, 
         price: '900', 
         category: 1, 
-        artist: '' 
+        artist: '',
+        available: 10
     },
     { 
         id: "2", 
         date: '2021-02-06', 
+        time: '6:20',
         title: 'Fantastic show', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -21,23 +24,27 @@ export const shows = [
         rating: 5, 
         price: '900', 
         category: 2, 
-        artist: "" 
+        artist: "",
+        available: 2
     },
     { 
         id: "3", 
         date: '2021-02-12', 
         title: 'Magic Evening', 
+        time: '6:20',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
         thumb: 'circus1_small.jpg', 
         rating: 5, 
         price: '900', 
         category: 1, 
-        artist: "" 
+        artist: "",
+        available: 0
     },
     { 
         id: "4", 
         date: '2021-02-13', 
+        time: '6:20',
         title: '', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -50,6 +57,7 @@ export const shows = [
     { 
         id: "5", 
         date: '2021-02-19', 
+        time: '6:20',
         title: 'Show name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -62,6 +70,7 @@ export const shows = [
     { 
         id: "6", 
         date: '2021-02-20', 
+        time: '6:20',
         title: 'Show name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -74,6 +83,7 @@ export const shows = [
     { 
         id: "7", 
         date: '2021-03-05', 
+        time: '6:20',
         title: 'Shown name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -86,6 +96,7 @@ export const shows = [
     { 
         id: "8", 
         date: '2021-03-06', 
+        time: '6:20',
         title: 'Show name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -96,8 +107,9 @@ export const shows = [
         artist: "" 
     },
     {
-        id: "8",
+        id: "9",
         date: '2021-03-12',
+        time: '6:20',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -108,8 +120,9 @@ export const shows = [
         artist: ""
     },
     {
-        id: "8",
+        id: "10",
         date: '2021-03-20',
+        time: '6:20',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -120,8 +133,9 @@ export const shows = [
         artist: ""
     },
     {
-        id: "8",
+        id: "11",
         date: '2021-03-26',
+        time: '6:20',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -132,8 +146,9 @@ export const shows = [
         artist: ""
     },
     {
-        id: "8",
+        id: "12",
         date: '2021-06-05',
+        time: '6:20',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -145,8 +160,9 @@ export const shows = [
     },
 
     {
-        id: "8",
+        id: "13",
         date: '2021-06-04',
+        time: '6:20',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -157,8 +173,9 @@ export const shows = [
         artist: ""
     },
     {
-        id: "8",
+        id: "14",
         date: '2022-01-11',
+        time: '6:20',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -169,8 +186,9 @@ export const shows = [
         artist: ""
     },
     {
-        id: "8",
+        id: "15",
         date: '2023-01-17',
+        time: '6:20',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
