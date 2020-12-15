@@ -232,9 +232,9 @@ export const shows = [
 
 ];
 export const categories = [
-    { id: 1, name: 'Clown', icon: '<img src="img/circus1_small.jpg"/>' },
-    { id: 2, name: 'Acrobate', icon: '<img src="img/circus1_small.jpg"/>' },
-    { id: 3, name: 'Rope artist', icon: '<img src="img/circus1_small.jpg"/>'},
-    { id: 4, name: 'Magician', icon: '<img src="img/circus1_small.jpg"/>' }
+    { id: 1, name: 'Clown', icon: '<img src="img/circus1_small.jpg"/>', slug:'clown' },
+    { id: 2, name: 'Acrobate', icon: '<img src="img/circus1_small.jpg"/>', slug:'acrobate' },
+    { id: 3, name: 'Rope artist', icon: '<img src="img/circus1_small.jpg"/>', slug:"rope-artist"},
+    { id: 4, name: 'Magician', icon: '<img src="img/circus1_small.jpg"/>', slug: 'magician' }
 
 ]

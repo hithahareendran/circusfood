@@ -8,10 +8,13 @@ function addShows() {
         const list = $('#showList');
         const template = document.getElementById('template-show-item');
         const instance = document.importNode(template.content, true);
+        const category = categories.find(cat => cat.id == show.category);
+        console.log('category ', category.name);
         $(instance).find('#title').text(show.title);
+        $(instance).find('#category').text(category.name);
         //$(instance).find('#price').text(show.price + 'Kr');
         $(instance).find('#description').text(show.description);
-        $(instance).find('#date').text(show.date);
+        $(instance).find('#date').text(show.date + ' ' + show.time);
         //$(instance).find('content').text(show.content);
         $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
         $(instance).find('#modal-button').attr('data-bs-id', show.id);
@@ -80,7 +83,9 @@ showModal.addEventListener('show.bs.modal', function (event) {
         booking.price = show[category];
         console.log('show ', show)
         booking.showId = show.id;
-        booking.time = show.time
+        booking.time = show.time;
+        booking.date = show.date;
+        booking.name = show.title;
         
         $('.show-card').removeClass("bg-success");
         $("#"+category).addClass("bg-success");
@@ -102,11 +107,19 @@ console.log('categories ', categories);
 function categoriesAsTabs(categories) {
     let ul = $('<ul class="nav nav-pills flex-column">');
     let li = $('<li class="nav-item">');
-    li.append(`<a href="#" id="main" class="nav-link bg-info mb-3 p-3 shadow active" aria-current="page" onclick="openTab(event, 'main-content')">All shows</a>`);
+    li.append(`
+            <a href="#" id="main" class="nav-link bg-info mb-3 p-3 shadow active tab-item" aria-current="page" 
+            onclick="openTab(event, 'all')">All shows</a>
+    `);
+
     ul.append(li);
     categories.forEach(c => {
         let li = $('<li class="nav-item">');
-        let link = $(`<a href="#" class="d-flex justify-content-between nav-link mb-3 p-3 shadow" id="${c.name}" onclick="openTab(event, '${c.name}-content')">`);
+        let link = $(`
+                <a href="#" class="d-flex justify-content-between nav-link mb-3 p-3 shadow tab-item" id="${c.name}" 
+                onclick="openTab(event, '${c.name}')">
+        `);
+
         const icon = $(c.icon).addClass("rounded-pill");
         icon.attr("width", "60");
         console.log('name ', c.name);
@@ -124,24 +137,21 @@ function categoriesAsTabs(categories) {
 }
 
 function openTab(event, tabName) {
-    $(".show-item").attr("style", "");
-    var tabContent, tablinks;
-    tabContent = $(".tab-content");
-    console.log(tabContent);
+    console.log('tab name ', tabName);
+    $('.tab-item').removeClass('active')
+    if (tabName == 'all') {
+        $(".show-item").attr("style", "");
 
-    tabContent.each((index, tab) => $(tab).css("display", "none"));
-    
-    tablinks = $(".nav-link");
-    tablinks.each((index, link) => $(link).removeClass("active"))
-    document.getElementById(tabName).style.display = "block";
+    } else {     
+        $(".show-item").map((index, card) => card.innerText.includes(tabName) ? card.style.display = "block" : card.style.display = "none");
+        
+    }
     event.currentTarget.className += " active";
-    console.log('target ', event.currentTarget);
-    return false;
 }
 // using modules
 window.openTab = openTab;
 
-var booking = {orderId:'', showId: '', name: '', time: '', image: '', category: '', seatings: '', price:''};
+var booking = {orderId:'', showId: '', name: '', date: '', time: '', image: '', category: '', seatings: '', price:''};
 
 $(document).ready(function() {
     console.log('document loaded');
