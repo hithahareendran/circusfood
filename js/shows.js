@@ -83,7 +83,9 @@ showModal.addEventListener('show.bs.modal', function (event) {
         booking.price = show[category];
         console.log('show ', show)
         booking.showId = show.id;
-        booking.time = show.time
+        booking.time = show.time;
+        booking.date = show.date;
+        booking.name = show.title;
         
         $('.show-card').removeClass("bg-success");
         $("#"+category).addClass("bg-success");
@@ -149,7 +151,7 @@ function openTab(event, tabName) {
 // using modules
 window.openTab = openTab;
 
-var booking = {orderId:'', showId: '', name: '', time: '', image: '', category: '', seatings: '', price:''};
+var booking = {orderId:'', showId: '', name: '', date: '', time: '', image: '', category: '', seatings: '', price:''};
 
 $(document).ready(function() {
     console.log('document loaded');
