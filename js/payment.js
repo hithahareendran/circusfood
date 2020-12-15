@@ -1,4 +1,6 @@
-const cartItems = [];
+const cartItems = [
+];
+
 function initializeCart() {
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
@@ -99,7 +101,6 @@ function createAndShowModelPopup() {
 
 function checkoutComplete() {
   document.getElementById("payment-form").reset();
-  localStorage.clear();
   window.location.assign("/home.html");
 }
 
@@ -122,8 +123,11 @@ window.onload = () => {
         event.preventDefault();
         event.stopPropagation();
         if (form.checkValidity() === false) {
+          console.log("invalid");
         }
         else {
+          console.log("valid");
+          localStorage.clear();
           createAndShowModelPopup();
         }
 
