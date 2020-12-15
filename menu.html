@@ -9,17 +9,20 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"
     integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
   <!-- specific css with customized tab link -->
   <!-- refered css from https://bootstrapious.com/p/bootstrap-vertical-tabs -->
+  <link rel="stylesheet" type="text/css" href="css/added.css">
   <link rel="stylesheet" type="text/css" href="css/menu.css">
 
-  <!-- common js for nav bar -->
-  <script src="js/create-menu.js"></script>
   <!-- specific js with all functiona and initial load method -->
+  <script src="js/create-menu.js"></script>
   <script src="js/menu.js"></script>
   <title>The Food Circus</title>
 
@@ -36,7 +39,7 @@
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
-            <img id="itemImage" src="img/item1.jpeg" class="img-fluid rounded">
+            <img id="itemImage" src="img/item1.jpeg" class="img-fluid rounded custom-menu-image">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -59,7 +62,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="row">
-                    <a href="#" class="btn btn-primary stretched-link" id="order">Order item</a>
+                    <a href="#" class="btn btn-primary button" id="order">Order item</a>
                   </div>
                 </div>
               </div>
@@ -76,99 +79,151 @@
       <div class="row">
         <div class="col-md-2"> <img id="itemImage" src="img/item1.jpeg" width="30px" height="30px"
             class="img-fluid  rounded-circle"></div>
-        <div class="col-md-5" id="itemName">asdf</div>
+        <div class="col-md-4" id="itemName">asdf</div>
         <div class="col-md-2" id="itemPrice">0</div>
-        <div class="col-md-3"><span class="badge bg-secondary rounded-pill" id="itemAdd">+</span>
+        <div class="col-md-4"><span class="badge bg-secondary rounded-pill" id="itemAdd">+</span>
           <span class="badge bg-primary rounded-pill" id="itemCount">1</span>
-          <span href="#" class="badge bg-secondary rounded-pill" id="itemRemove">-</span></div>
+          <span href="#" class="badge bg-secondary rounded-pill" id="itemRemove">-</span>
+        </div>
       </div>
     </li>
+  </template>
+
+  <template id="template-carousel-image">
+    <div class="col-sm-3">
+      <div class="img-box">
+        <div class="hover-container" id="hover-container">
+          <img id="carousel-image" src="img/item1.jpg" class="img-fluid" alt="">
+          <div class="overlay">
+            <div class="text" id="carousel-header">Pancakes</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </template>
 
 
   <!-- Main body starts from here -->
 
   <div class="container-fluid">
-    <h2 class="text-center mb-4">Explore Our Foods</h2>
+    <div class="row">
+      <div class="container">
 
-    <div class="container-fluid">
-      <!--  tab container https://www.w3schools.com/howto/howto_js_vertical_tabs.asp-->
-      <div class="row">
-        <div class="col-md-3">
-          <div class="row">
-
-            <!-- refered css from https://bootstrapious.com/p/bootstrap-vertical-tabs -->
-            <div class="nav flex-column nav-pills nav-pills-custom" role="tablist" aria-orientation="vertical">
-              <a class="nav-link mb-3 p-3 shadow active" id="main" href="#" onclick="openTab(event,'main-content')">
-                <i class="fa fa-pizza-slice"></i>
-                <span class="font-weight-bold small text-uppercase">Main Course</span></a>
-
-              <a class="nav-link mb-3 p-3 shadow" id="veg" href="#" onclick="openTab(event, 'veg-content')">
-                <i class="fas fa-carrot"></i>
-                <span class="font-weight-bold small text-uppercase">Vegiterian Menu</span></a>
-
-              <a class="nav-link mb-3 p-3 shadow" id="drink" href="#" onclick="openTab(event, 'drink-content')">
-                <i class="fas fa-cocktail"></i>
-                <span class="font-weight-bold small text-uppercase">Drinks Menu</span></a>
-
-              <a class="nav-link mb-3 p-3 shadow" id="child" href="#" onclick="openTab(event,'child-content')">
-                <i class="fas fa-hotdog"></i>
-                <span class="font-weight-bold small text-uppercase">Child Menu</span></a>
-            </div>
-          </div>
-
-          <!-- filter on ingrdiants https://www.w3schools.com/bootstrap/bootstrap_forms_inputs2.asp-->
-          <div class="row">
-            <form>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Filter" oninput="filterIngrediants(event)">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
+        <div class="row">
+          <div class="col-md-9 col-center">
+            <div id="menu-carosel" class="carousel slide" data-ride="carousel" data-interval="0">
+              <!-- Wrapper for carousel items -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="row" id="carousel-main-cource-menu">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row" id="carousel-veg-cource-menu">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row" id="carousel-drink-cource-menu">
+                  </div>
+                </div>
+                <div class="carousel-item" >
+                  <div class="row" id="carousel-child-cource-menu">
+                  </div>
                 </div>
               </div>
-            </form>
+              <a class="carousel-control-prev left" href="#menu-carosel" data-bs-slide="prev">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+              <a class="carousel-control-next right" href="#menu-carosel" data-bs-slide="next">
+                <i class="fa fa-chevron-right"></i>
+              </a>
+            </div>
           </div>
 
-          <!-- cart -->
+
           <div class="row">
-            <h5 class="mt-5">Your order</h5>
-            <ul class="list-group" id="itemList">
-              <li class="list-group-item d-flex justify-content-between align-items-center" id="itemName">
-                <div>Empty</div>
-              </li>
-            </ul>
+            <h2 class="text-center display-6">Explore Our Foods</h2>
           </div>
 
+          <!--  tab container https://www.w3schools.com/howto/howto_js_vertical_tabs.asp-->
+          <div class="row">
+            <div class="col-md-3">
+              <div class="row">
+
+                <!-- refered css from https://bootstrapious.com/p/bootstrap-vertical-tabs -->
+                <div class="nav flex-column nav-pills nav-pills-custom" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link mb-3 p-3 shadow active" id="main" href="#" onclick="openTab(event,'main-content')">
+                    <i class="fa fa-pizza-slice"></i>
+                    <span class="font-weight-bold small text-uppercase">Main Course</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow" id="veg" href="#" onclick="openTab(event, 'veg-content')">
+                    <i class="fas fa-carrot"></i>
+                    <span class="font-weight-bold small text-uppercase">Vegiterian Menu</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow" id="drink" href="#" onclick="openTab(event, 'drink-content')">
+                    <i class="fas fa-cocktail"></i>
+                    <span class="font-weight-bold small text-uppercase">Drinks Menu</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow" id="child" href="#" onclick="openTab(event,'child-content')">
+                    <i class="fas fa-hotdog"></i>
+                    <span class="font-weight-bold small text-uppercase">Child Menu</span></a>
+                </div>
+              </div>
+
+              <!-- filter on ingrdiants https://www.w3schools.com/bootstrap/bootstrap_forms_inputs2.asp-->
+              <div class="row">
+                <form>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Filter" oninput="filterIngrediants(event)">
+                    <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <!-- cart -->
+              <div class="row">
+                <h5 class="mt-5">Your order</h5>
+                <ul class="list-group mb-3" id="itemList">
+                  <li class="list-group-item d-flex justify-content-between align-items-center" id="itemName">
+                    <div>Empty</div>
+                  </li>
+                </ul>
+                <div class="text-center"><button type="button" id="checkout-button"
+                    class="btn btn-primary invisible button" onclick="doCheckout()">Checkout</button></div>
+              </div>
+
+            </div>
+
+
+            <div class="col-md-9">
+              <!-- Tabs content -->
+              <div class="tab-content" id="main-content">
+                <div class="row row-cols-1 row-cols-md-1 g-4" id="main-cource-menu">
+                </div>
+              </div>
+
+              <div class="tab-content" id="veg-content">
+                <div class="row row-cols-1 row-cols-md-1 g-4" id="veg-cource-menu">
+                </div>
+              </div>
+
+              <div class="tab-content" id="drink-content">
+                <div class="row row-cols-1 row-cols-md-1 g-4" id="drink-cource-menu">
+                </div>
+              </div>
+
+              <div class="tab-content" id="child-content">
+                <div class="row row-cols-1 row-cols-md-1 g-4" id="child-cource-menu">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-
-        <div class="col-md-9">
-          <!-- Tabs content -->
-          <div class="tab-content" id="main-content">
-            <div class="row row-cols-1 row-cols-md-1 g-4" id="main-cource-menu">
-            </div>
-          </div>
-
-          <div class="tab-content" id="veg-content">
-            <div class="row row-cols-1 row-cols-md-1 g-4" id="veg-cource-menu">
-            </div>
-          </div>
-
-          <div class="tab-content" id="drink-content">
-            <div class="row row-cols-1 row-cols-md-1 g-4" id="drink-cource-menu">
-            </div>
-          </div>
-
-          <div class="tab-content" id="child-content">
-            <div class="row row-cols-1 row-cols-md-1 g-4" id="child-cource-menu">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 
 

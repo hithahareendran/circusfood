@@ -1,0 +1,20 @@
+.button {
+    display: inline-block;
+    /* background: #4285f4; */
+    background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);  
+    background: linear-gradient(to right, #f7b733, #fc4a1a); 
+    color: #fff;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 5px;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    -webkit-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+  }
+  .button:hover {
+    box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translate(0px, -5px) scale(1.2);
+            transform: translate(0px, -5px) scale(1.2);
+  }
+  /*https://bootsnipp.com/snippets/Gl29g*/

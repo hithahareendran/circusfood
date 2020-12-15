@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/payment.css">
+        <link rel="stylesheet" type="text/css" href="css/added.css">
+        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <title>payment</title>
+    <script src="js/payment.js"></script>
+
+    <!--templates-->
+    <template id="template-cart-item">
+        <tr>
+            <td> <img id="itemImage" src="img/item1.jpeg" class="img-fluid rounded" width="30px" height="30px"> </td>
+            <td id="itemName">Chinese Noodles</td>
+            <td id="itemCount">2</td>
+            <td id="itemPrice">250kr</td>
+            <td id="vat">36.50kr</td>
+            <td id="total">500kr</td>
+            <td>
+                <span class="badge bg-secondary rounded-pill" id="itemAdd">+</span> &nbsp;&nbsp;
+                <span href="#" class="badge bg-secondary rounded-pill" id="itemRemove">-</span>
+            </td>
+        </tr>
+    </template>
+
+    <template id="template-cart-table">
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">VAT</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Adjust</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-body">
+                    <!--template items will be added here-->
+                </tbody>
+                <tfoot class="table-dark">
+                    <td></td>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td id="grand-total">500kr</td>
+                    <td></td>
+                </tfoot>
+            </table>
+        </div>
+    </template>
+
+    <template id="credit-card-template">
+        <div id="credit-card">
+            <div class="form-group"> <label for="username">
+                    <h6>Card Owner</h6>
+                </label> <input type="text" name="username" placeholder="Card Owner Name" required
+                    class="form-control ">
+            </div>
+            <div class="form-group"> <label for="cardNumber">
+                    <h6>Card number</h6>
+                </label>
+                <div class="input-group"> <input type="text" name="cardNumber" placeholder="Valid card number"
+                        class="form-control " required>
+                    <div class="input-group-append"> <span class="input-group-text text-muted"> <i
+                                class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i
+                                class="fab fa-cc-amex mx-1"></i> </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group"> <label><span class="hidden-xs">
+                                <h6>Expiration Date</h6>
+                            </span></label>
+                        <div class="input-group"> <input type="number" placeholder="MM" name="" class="form-control"
+                                required> <input type="number" placeholder="YY" name="" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group mb-4"> <label data-bs-toggle="tooltip"
+                            title="Three digit CV code on the back of your card">
+                            <h6>CVV <i class="fa fa-question-circle d-inline"></i>
+                            </h6>
+                        </label> <input type="text" required class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="swish-template">
+
+        <div class="form-group "> <label for="Select Your Bank">
+                <h6>Select your phone</h6>
+            </label>
+            <div class="col-md-6 position-relative">
+                <label for="validationCustom04">Phone</label>
+                <input type="tel" class="form-control" id="validationCustom04" placeholder="Phone (07XXXXXXXX)"
+                    pattern="0[678][0-9]{8}" required>
+                <div class="invalid-tooltip">
+                    Please provide a valid Phone.
+                </div>
+            </div>
+        </div>
+
+        <p class="text-muted">Note: After checking out, you will be directed to
+            swish for payment. </p>
+
+    </template>
+
+</head>
+
+<body>
+    <div class="container">
+        <form class="needs-validation" id="payment-form" novalidate>
+            <div class="row">
+                <div class="col-lg-12 col-xl-6">
+                    <div class="container-fluid">
+                        <!-- cart  -->
+                        <div class="row">
+                            <h1 class="text-center display-6 text-muted">Shopping Cart</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col shadow p-3 bg-white rounded menu-item">
+                                <div id="checkout-cart"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-12 col-xl-6">
+                    <div class="container-fluid">
+                        <!-- comments -->
+                        <div class="row">
+                            <h1 class="text-center display-6 text-muted">Comments</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col shadow p-3 bg-white rounded menu-item">
+                                <div class="mb-3">
+                                    <label for="comments" class="form-label">Comments on
+                                        Alergies/Special diets</label>
+                                    <textarea class="form-control" id="comments" aria-describedby="commentHelp"
+                                        rows="2"></textarea>
+                                    <small id="commentHelp" class="form-text text-muted">If you or someone in your party
+                                        requires a special diet, special needs or allergies please mention, e.g. if you
+                                        are
+                                        celebrating something. If you have any special needs, we want you to contact our
+                                        Guest Service.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-12 col-xl-6">
+                    <div class="container-fluid">
+                        <!-- information -->
+                        <div class="row">
+                            <h1 class="text-center display-6 text-muted">Information</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col shadow p-3 bg-white rounded menu-item">
+
+                                <div class="row mb-2">
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationCustom01">First name* </label>
+                                        <input type="text" class="form-control" id="first-name"
+                                            placeholder="First name" required>
+                                        <div class="valid-tooltip">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationCustom02">Last name* </label>
+                                        <input type="text" class="form-control" id="last-name"
+                                            placeholder="Last name" required>
+                                        <div class="valid-tooltip">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationCustom03">Email*</label>
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                            required>
+                                        <div class="invalid-tooltip">
+                                            Please provide a valid email.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label for="validationCustom04">Phone</label>
+                                        <input type="tel" class="form-control" id="contact"
+                                            placeholder="Phone (07XXXXXXXX)" pattern="0[678][0-9]{8}" required>
+                                        <div class="invalid-tooltip">
+                                            Please provide a valid Phone.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-xl-6">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h1 class="text-center display-6 text-muted">Payment</h1>
+                        </div>
+                        <div class="row">
+                            <!-- payment -->
+                            <div class="col shadow p-3 bg-white rounded menu-item">
+
+                                <div class="card ">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs bg-light nav-pills rounded nav-fill mb-3" id="pills-tab"
+                                            role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <a class="nav-link active rounded-pill" id="pills-contact-tab" data-bs-toggle="pill"
+                                                    href="#pills-contact" role="tab" aria-controls="pills-contact"
+                                                    aria-selected="true"> Pay-at-Counter</a>
+                                            </li>
+                                            <li class="nav-item" role="presentation" onclick="addTab('credit-card')">
+                                                <a class="nav-link rounded-pill" id="pills-card-tab" data-bs-toggle="pill"
+                                                    href="#pills-card" role="tab" aria-controls="pills-card"
+                                                    aria-selected="false"> <i class="fas fa-credit-card mr-2"></i>
+                                                    Credit
+                                                    Card</a>
+                                            </li>
+                                            <li class="nav-item" role="presentation" onclick="addTab('swish')">
+                                                <a class="nav-link rounded-pill" id="pills-swish-tab" data-bs-toggle="pill"
+                                                    href="#pills-swish" role="tab" aria-controls="pills-swish"
+                                                    aria-selected="false"> <i class="fas fa-mobile-alt mr-2"></i> Swish
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-contact" role="tabpanel"
+                                                aria-labelledby="pills-contact-tab">
+                                                <p class="text-muted">Note: Please show the reciept recieved in your
+                                                    email at counter. </p>
+                                            </div>
+                                            <div class="tab-pane fade " id="pills-card" role="tabpanel"
+                                                aria-labelledby="pills-card-tab">
+                                                <!-- credit card info-->
+                                            </div>
+
+                                            <div class="tab-pane fade" id="pills-swish" role="tabpanel"
+                                                aria-labelledby="pills-swish-tab">
+                                                <!-- swish info-->
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="container">
+                    <div class="row">
+                        <h1 class="text-center display-6 text-muted">Checkout</h1>
+                    </div>
+                    <div class="row">
+                        <!-- information -->
+                        <div class="col shadow p-3 bg-white rounded menu-item">
+                            <div class="col-md-12 mb-2">
+                                <div class="form-group">
+                                    <div class="form-check" aria-describedby="agreeHelp">
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
+                                            required>
+                                        <label class="form-check-label" for="invalidCheck">
+                                            Agree to terms and conditions
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            You must agree before submitting.
+                                        </div>
+                                    </div>
+                                    <small id="agreeHelp" class="form-text text-muted">We'll never share your
+                                        personal information with anyone else.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary button" id="submit" type="submit">Checkout cart</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+    </div>
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="checkout-success" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h5 class="modal-title" id="checkout-header">Modal title</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="thanks-comment"></div>
+                    <div id="checkout-cart-popup"></div>
+                    <div id="special-comments"></div>
+                    <div id="email-comment"></div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-primary rounded-pill w-50 button " onclick="checkoutComplete()">Complete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
