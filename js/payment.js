@@ -3,20 +3,44 @@ const cartItems = [
 
 //get items from storage, create cart table and add to cart and popup
 function initializeCart() {
+  //get shows
+  let booking = JSON.parse(localStorage.getItem('order'));
+
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
   if (selected === null) {
     localStorage.setItem("menu-cart-items", JSON.stringify(cartItems));
     selected = JSON.parse(localStorage.getItem("menu-cart-items"));
   }
+
   let total = 0;
+
+  //outer template for the table
   const cartTableTemplate = document.getElementById('template-cart-table');
   const cartTable = document.importNode(cartTableTemplate.content, true)
 
-  //reset checkout cart
+  //reset checkout cart and popup cart
   document.getElementById('checkout-cart').innerHTML = "";
   document.getElementById('checkout-cart-popup').innerHTML = "";
 
+  //if there is booking add it as the first item on the table
+  if (booking !== null) {
+    console.log(booking);
+    const template = document.getElementById('template-cart-item');
+    const instance = document.importNode(template.content, true)
+    instance.getElementById('itemImage').setAttribute('src', 'img/' + booking.image);
+    instance.getElementById('itemName').innerHTML = booking.name + '<br/>' + booking.date+"+"+booking.time;
+    instance.getElementById('itemCount').innerHTML = '('+booking.category +')' + booking.seatings;
+    instance.getElementById('itemPrice').innerHTML = booking.price + 'kr';
+    let vat = (Number(booking.price) / (1 + (1 / 0.2))).toFixed(2);
+    instance.getElementById('vat').innerHTML = vat + 'kr';
+    total += Number(booking.price);
+    instance.getElementById('total').innerHTML = Number(booking.price) + 'kr';
+    instance.getElementById('adjust').innerHTML = "<span class='badge bg-secondary rounded-pill' onclick='removeBooking()'><i class='fas fa-trash-alt'></i></span>";
+    cartTable.getElementById("cart-body").appendChild(instance);
+  }
+
+  // add all menu item to the template
   selected.forEach(item => {
     const template = document.getElementById('template-cart-item');
     const instance = document.importNode(template.content, true)
@@ -35,7 +59,8 @@ function initializeCart() {
 
   });
 
-  if (selected.length > 0) {
+  //if the cart has any item add the table to the html cart/popup
+  if (selected.length > 0 || booking!==null) {
     document.getElementById('checkout-cart-popup').appendChild(cartTable.cloneNode(true));
     document.getElementById('checkout-cart').appendChild(cartTable);
     document.querySelectorAll('#grand-total').forEach(i => i.innerHTML = total + 'kr');
@@ -47,6 +72,11 @@ function initializeCart() {
 
 }
 
+function removeBooking()
+{
+  localStorage.removeItem('order');
+  initializeCart();
+}
 
 //increase the count of the item on local storage
 function addCount(itemId) {
@@ -103,8 +133,6 @@ function createAndShowModelPopup() {
   document.getElementById('email-comment').innerHTML = 'A reciept will be send to email ' + email +
     ' or an sms on number ' + document.getElementById('contact').value + " will be send to you.";
 
-    //send email
-  sendEmail(referenceNo, email);
 
   //show popup
   var myModal = new bootstrap.Modal(document.getElementById('checkout-success'), {
@@ -118,21 +146,6 @@ function createAndShowModelPopup() {
 function checkoutComplete() {
   document.getElementById("payment-form").reset();
   window.location.assign("/home.html");
-}
-
-/*https://www.pepipost.com/tutorials/how-to-send-emails-with-javascript/ */
-function sendEmail(referenceNo, email) {
-  Email.send({
-    Host: "smtp.gmail.com",
-    Username: "circusfoodrestaurant@gmail.com",
-    Password: "circusfoodrestaurant123",
-    To: email,
-    From: "circusfoodrestaurant@gmail.com",
-    Subject: "Thank you for ordering food from circus food restaturant,  your order reference number #" + referenceNo,
-    Body: document.getElementById('email-content').innerHTML,
-  }).then(
-    message => console.log("mail sent successfully")
-  );
 }
 
 
@@ -158,13 +171,14 @@ window.onload = () => {
         }
         else {
           var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
-          if (selected != null && selected.length > 0) {
+          let booking = JSON.parse(localStorage.getItem('order'));
+          if (booking!=null || (selected != null && selected.length > 0)) {
             console.log("valid");
             localStorage.clear();
             //create popup and send email
             createAndShowModelPopup();
           }
-          else{
+          else {
             //nothing in cart so no popup and redirect
             window.location.assign("/home.html");
           }
