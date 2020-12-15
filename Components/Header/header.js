@@ -3,7 +3,7 @@ headerTemplate.innerHTML = `
   <link rel="stylesheet" href="../components/Header/header.css" type="text/css">
   <header-with-menu>
   <div class="menuContainer">
-      <div class="logo"><img src="images/logo.jpeg" alt="The Famous Circus Restaurant" width="30px" height="30px"></div>
+      <div class="logo"><img src="img/logo.jpeg" alt="The Famous Circus Restaurant" width="30px" height="30px"></div>
       <div>
           <nav>
               <ul class="navLinks">
