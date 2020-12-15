@@ -1,20 +1,7 @@
 import { shows, categories } from './components/shows.js';
 import { calendar } from './components/calendar.js';
 
-var booking = {
-    id:  '',
-    seatings: '',
-    category: '',
-    set id(id) {
-        this.id = id;
-    },
-    set seatings(num) {
-        this.seatings = num;
-    },
-    set category(cat) {
-        this.category = cat;
-    }
-}
+
 
 function addShows() {
     shows.forEach(show => {
@@ -48,12 +35,15 @@ $("#more-seatings-button").click(() => {
 $("#quantity").change(() => {
     console.log($(this).val())
     booking.seatings = $("#seating-quantity").text(event.target.value);
-
+    
 });
 
 $("#go-to-payment").click(() => {
-    console.log(booking);
-    let person = $("#seating-quantity").text();
+    let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase(); 
+    let seatings = $("#seating-quantity").text();
+    booking.orderId = orderId;
+    booking.seatings = seatings;
+    localStorage.setItem('order', JSON.stringify(booking));
 
 });
 
@@ -85,14 +75,18 @@ showModal.addEventListener('show.bs.modal', function (event) {
         const button = $(e.target);
         let seatings = $("#seating-quantity").text();
         let category = button.data('category');
-
+        booking.category = category;
+        booking.image = show.thumb;
+        booking.price = show[category];
+        console.log('show ', show)
+        booking.showId = show.id;
+        booking.time = show.time
+        
         $('.show-card').removeClass("bg-success");
         $("#"+category).addClass("bg-success");
-        let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase(); 
-        let booking = {orderId, showId, seatings, category};
         
-        localStorage.setItem('order', JSON.stringify(booking));
-        localStorage.setItem('test', 1);
+        
+        
     });
     
     modalTitle.textContent = 'Seating booking for ' + show.date + ' ' + show.time
@@ -129,18 +123,17 @@ function categoriesAsTabs(categories) {
 
 }
 
-function openTab(event, tabname) {
+function openTab(event, tabName) {
     $(".show-item").attr("style", "");
-    var i, tabcontent, tablinks;
-    tabcontent = $(".tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].css("display", "none");
-    }
+    var tabContent, tablinks;
+    tabContent = $(".tab-content");
+    console.log(tabContent);
+
+    tabContent.each((index, tab) => $(tab).css("display", "none"));
+    
     tablinks = $(".nav-link");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].removeClass("active");
-    }
-    document.getElementById(tabname).style.display = "block";
+    tablinks.each((index, link) => $(link).removeClass("active"))
+    document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " active";
     console.log('target ', event.currentTarget);
     return false;
@@ -148,10 +141,10 @@ function openTab(event, tabname) {
 // using modules
 window.openTab = openTab;
 
+var booking = {orderId:'', showId: '', name: '', time: '', image: '', category: '', seatings: '', price:''};
 
 $(document).ready(function() {
     console.log('document loaded');
-    
     addShows();
     categoriesAsTabs(categories)
     $("#calendar").html(calendar());
