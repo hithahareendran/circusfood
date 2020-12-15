@@ -1,6 +1,7 @@
 const cartItems = [
 ];
 
+//get items from storage, create cart table and add to cart and popup
 function initializeCart() {
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
@@ -33,9 +34,17 @@ function initializeCart() {
     cartTable.getElementById("cart-body").appendChild(instance);
 
   });
-  document.getElementById('checkout-cart-popup').appendChild(cartTable.cloneNode(true));
-  document.getElementById('checkout-cart').appendChild(cartTable);
-  document.querySelectorAll('#grand-total').forEach(i=>i.innerHTML = total+'kr'); 
+
+  if (selected.length > 0) {
+    document.getElementById('checkout-cart-popup').appendChild(cartTable.cloneNode(true));
+    document.getElementById('checkout-cart').appendChild(cartTable);
+    document.querySelectorAll('#grand-total').forEach(i => i.innerHTML = total + 'kr');
+  }
+  else {
+    document.getElementById('checkout-cart').innerHTML = "<div>No item ordered</div>";
+    document.getElementById('checkout-cart-popup').innerHTML = "<div>No item ordered</div>";
+  }
+
 }
 
 
@@ -63,7 +72,7 @@ function removeCount(itemId) {
   initializeCart();
 }
 
-//programatically adding tab content forms to avoid form validation on all
+//programatically adding tab content forms to avoid form validation on all (credit card and swish)
 function addTab(tabName) {
   document.getElementById("pills-card").innerHTML = "";
   document.getElementById("pills-swish").innerHTML = "";
@@ -81,27 +90,49 @@ function addTab(tabName) {
 }
 
 function createAndShowModelPopup() {
-  document.getElementById('checkout-header').innerHTML = 'Your booking reference number #' + Math.round(Math.random() * (999999 - 12345) + 12345);
-  var myModal = new bootstrap.Modal(document.getElementById('checkout-success'), {
-    backdrop: 'static',
-    role: 'dialog',
-    keyboard: false
-  })
-  myModal.show();
+  //fix the popup template
+  let referenceNo = Math.round(Math.random() * (999999 - 12345) + 12345);
+  document.getElementById('checkout-header').innerHTML = 'Your booking reference number #' + referenceNo;
   document.getElementById('thanks-comment').innerHTML = "Thank you for your order "
     + document.getElementById('first-name').value + " " + document.getElementById('last-name').value;
   let comment = document.getElementById('comments').value;
   if (comment.trim() !== "") {
     document.getElementById('special-comments').innerHTML = "<p>special comments - " + comment + "</p>";
   }
-  document.getElementById('email-comment').innerHTML = 'A reciept will be send to email ' + document.getElementById('email').value +
+  let email = document.getElementById('email').value;
+  document.getElementById('email-comment').innerHTML = 'A reciept will be send to email ' + email +
     ' or an sms on number ' + document.getElementById('contact').value + " will be send to you.";
 
+    //send email
+  sendEmail(referenceNo, email);
+
+  //show popup
+  var myModal = new bootstrap.Modal(document.getElementById('checkout-success'), {
+    backdrop: 'static',
+    role: 'dialog',
+    keyboard: false
+  });
+  myModal.show();
 }
 
 function checkoutComplete() {
   document.getElementById("payment-form").reset();
   window.location.assign("/home.html");
+}
+
+/*https://www.pepipost.com/tutorials/how-to-send-emails-with-javascript/ */
+function sendEmail(referenceNo, email) {
+  Email.send({
+    Host: "smtp.gmail.com",
+    Username: "circusfoodrestaurant@gmail.com",
+    Password: "circusfoodrestaurant123",
+    To: email,
+    From: "circusfoodrestaurant@gmail.com",
+    Subject: "Thank you for ordering food from circus food restaturant,  your order reference number #" + referenceNo,
+    Body: document.getElementById('email-content').innerHTML,
+  }).then(
+    message => console.log("mail sent successfully")
+  );
 }
 
 
@@ -126,9 +157,17 @@ window.onload = () => {
           console.log("invalid");
         }
         else {
-          console.log("valid");
-          localStorage.clear();
-          createAndShowModelPopup();
+          var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
+          if (selected != null && selected.length > 0) {
+            console.log("valid");
+            localStorage.clear();
+            //create popup and send email
+            createAndShowModelPopup();
+          }
+          else{
+            //nothing in cart so no popup and redirect
+            window.location.assign("/home.html");
+          }
         }
 
         form.classList.add('was-validated');

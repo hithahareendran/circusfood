@@ -18,7 +18,9 @@
         
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>payment</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/payment.js"></script>
+      
 
     <!--templates-->
     <template id="template-cart-item">
@@ -136,7 +138,7 @@
                     <div class="container-fluid">
                         <!-- cart  -->
                         <div class="row">
-                            <h1 class="text-center display-6 text-muted">Shopping Cart</h1>
+                            <h1 class="text-center display-6 text-muted">Cart</h1>
                         </div>
                         <div class="row">
                             <div class="col shadow p-3 bg-white rounded menu-item">
@@ -286,9 +288,9 @@
             </div>
 
             <div class="col-md-12">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
-                        <h1 class="text-center display-6 text-muted">Checkout</h1>
+                        <h1 class="text-center display-6 text-muted"></h1>
                     </div>
                     <div class="row">
                         <!-- information -->
@@ -311,7 +313,7 @@
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <button class="btn btn-primary button" id="submit" type="submit">Checkout cart</button>
+                                <button class="btn btn-primary button" id="submit" type="submit">Complete purchase</button>
                             </div>
 
 
@@ -329,17 +331,19 @@
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <div class="icon-box">
-                        <i class="fas fa-check"></i>
+                <div id="email-content">
+                    <div class="modal-header">
+                        <div class="icon-box">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h5 class="modal-title" id="checkout-header">Reference Number #</h5>
                     </div>
-                    <h5 class="modal-title" id="checkout-header">Modal title</h5>
-                </div>
-                <div class="modal-body">
-                    <div id="thanks-comment"></div>
-                    <div id="checkout-cart-popup"></div>
-                    <div id="special-comments"></div>
-                    <div id="email-comment"></div>
+                    <div class="modal-body">
+                        <div id="thanks-comment"></div>
+                        <div id="checkout-cart-popup"></div>
+                        <div id="special-comments"></div>
+                        <div id="email-comment"></div>
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-primary rounded-pill w-50 button " onclick="checkoutComplete()">Complete</button>
