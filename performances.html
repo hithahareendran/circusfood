@@ -66,20 +66,16 @@
             <!-- Tabs content -->
             <div class="tab-content" id="main-content">
             </div>
-            <!-- <div class="tab-content" id="Clown-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="clown"></div>
+            <div class="tab-content" id="Clown-content">
             </div>
             
             <div class="tab-content" id="Magician-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="magician"></div>
             </div>
             
             <div class="tab-content" id="Acrobate-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="acrobate"></div>
             </div>
             <div class="tab-content" id="Rope artist-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="rope"></div>
-            </div> -->
+            </div>
             <div id="showList"></div>
           </div>
       
@@ -108,21 +104,23 @@
                       <button class="btn btn-outline-info rounded-circle quantity-button">4</button>
                       <button class="btn btn-outline-info rounded-circle quantity-button">5</button>
                       <button class="btn btn-outline-info rounded-circle quantity-button">6</button>
-                      <p>Or even more</p>
-                      <div class="form-group">
+                      <button class="btn btn-dark rounded-circle quantity-button" id="more-seatings-button">More</button>
+                      <div class="seatings" class="d-none">
+                        <div class="border">
+                          <p>Number of seats <span id="seating-quantity"></span></p>
+                        </div>
+                      </div>
+                      <div class="form-group d-none" id="add-seatings">
                         <label for="quantity">Choose quantity</label>
                         <input type="number" id="quantity" min="7" max="24" value="7">
-                      </div>
-                      <div class="border">
-                        <p>Number of seats <span id="seating-quantity"></span></p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-8">
                   <div class="row">
-                    <div class="card shadow mb-3">
-                      <h5 class="card-title text-red">Category Gold</h5>
+                    <div class="card shadow mb-3 show-card" id="gold">
+                      <h5 class="card-title">Gold</h5>
                       <p>895 Kr</p>
                       <div class="card-body">
                         <p>Seats with a clear view of the stage (no cinema seating so you may have to turn around)</p>
@@ -130,8 +128,8 @@
                         <button class="btn btn-outline-success rounded-circle booking-button" data-category="gold" data-id>Book</button>
                       </div>
                     </div>
-                    <div class="card shadow mb-3">
-                      <h5 class="card-title">Category Silver</h5>
+                    <div id="silver" class="card shadow mb-3 show-card">
+                      <h5 class="card-title">Silver</h5>
                       <p>795 Kr</p>
                       <div class="card-body">
                         <p>Places with a partially obscured view of the stage</p>
@@ -139,8 +137,8 @@
                         <button class="btn btn-outline-success rounded-circle booking-button" data-category="silver" data-id>Book</button>
                       </div>
                     </div>
-                    <div class="card shadow mb-3">
-                      <h5 class="card-title">Category Bronze</h5>
+                    <div id="bronze" class="card shadow mb-3 show-card">
+                      <h5 class="card-title">Bronze</h5>
                       <p>595 Kr</p>
                       <div class="card-body">
                         <p>Places with obscured view to the stage</p>
@@ -153,10 +151,10 @@
                 </div>
               </div>  
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" id="go-to-payment" class="btn btn-primary">Book</button>
+            </div>
           </div>
           </div>
         </div>
