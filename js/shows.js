@@ -50,18 +50,15 @@ $(".quantity").change(() => {
 let showModal = document.getElementById('showModal');
 
 showModal.addEventListener('show.bs.modal', function (event) {
-    // Button that triggered the modal
+    
     
     let button = event.relatedTarget
-    // Extract info from data-bs-* attributes
+    
     let showId = button.getAttribute('data-bs-id');
     let show = shows.find(show => show.id == showId);
     console.log('show ', show);
     console.log('showId', showId);
-    // If necessary, you could initiate an AJAX request here
-    // and then do the updating in a callback.
-    //
-    // Update the modal's content.
+    
     
     let alert = showModal.querySelector('.alert')
     alert.innerHTML = `<h5>${show.title}</h5><span class="fw-lighter text-end">${show.date} ${show.time}</span><p>${show.description}</p>`;
@@ -142,45 +139,7 @@ showModal.addEventListener('show.bs.modal', function (event) {
 
         })
         $("#seatings-" + category).append(removeCategoryButton);  
-        /* let bookingButton = $('<button class="btn">Add to cart</button>').click((e) => {
-            $(e.target).attr("disabled", true);
-            let tr = $(e.target).siblings('table').children().last();
-            let tableData = tr.children();
-            let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase();
-            booking.orderId = orderId;
-            const menuButton = $(`
-                <a href="menu.html" class="btn" data-order-id="${orderId}">
-                    Add a menu for this booking
-                </a>
-            `);
-            $("#seatings-" + category).append(menuButton);
-
-            
-            booking.seatings = tableData.eq(4).text();
-            
-            booking.category = tableData.eq(1).text();
-            booking.image = show.thumb;
-            booking.price = tableData.eq(5).text();
-            booking.showId = show.id;
-            booking.time = show.time;
-            booking.date = show.date;
-            booking.name = show.title;
-            const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-            bookings.forEach(b => {
-                if (booking.showId == b.showId && booking.category == b.category) {
-                    console.log('already booked');
-                }
-            })
-            bookings.push(booking);
-            localStorage.setItem('bookings', JSON.stringify(bookings));
-            //console.log('rows ', $(e.target).siblings('table').rows);
-            //console.log($(category).prev());
-        }) */
-        //$("#seatings-"+category).append(bookingButton);
-            
-        //$("#order-status").append(table);
-        
-        
+    
         
     });
     
