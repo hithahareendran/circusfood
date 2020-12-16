@@ -132,6 +132,10 @@ function filterIngrediants(event) {
 function doCheckout() {
   window.location.assign("/payment.html");
 }
+function goToShow() {
+  window.location.assign("/performances.html");
+}
+
 
 //add image to carousel
 function addItemToCarousel()

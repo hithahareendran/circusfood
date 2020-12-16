@@ -2,11 +2,8 @@
 //get items from storage, create cart table and add to cart and popup
 function initializeCart() {
   //get shows
-  let bookings = JSON.parse(localStorage.getItem('bookings'));
-  if (bookings === null) {
-    localStorage.setItem("bookings", JSON.stringify([]));
-    bookings = JSON.parse(localStorage.getItem('bookings'));
-  }
+  let booking = JSON.parse(localStorage.getItem('bookings'));
+  console.log(booking);
 
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
@@ -26,24 +23,27 @@ function initializeCart() {
   document.getElementById('checkout-cart-popup').innerHTML = "";
 
   //if there is booking add it as the first item on the table
-  bookings.forEach(booking => {
-    const template = document.getElementById('template-cart-item');
-    const instance = document.importNode(template.content, true)
-    instance.getElementById('itemImage').setAttribute('src', 'img/' + booking.image);
-    instance.getElementById('itemName').innerHTML = booking.name + '<br/>' + booking.date + "+" + booking.time;
-    instance.getElementById('itemCount').innerHTML = '(' + booking.category + ')' + booking.seatings;
-    instance.getElementById('itemPrice').innerHTML = booking.price + 'kr';
-    let vat = (Number(booking.price) / (1 + (1 / 0.2))).toFixed(2);
-    instance.getElementById('vat').innerHTML = vat + 'kr';
-    let totalBookingPrice = (Number(booking.price) * Number(booking.seatings));
-    total += totalBookingPrice;
-    instance.getElementById('total').innerHTML = totalBookingPrice + 'kr';
-    instance.getElementById('itemRemove').style.display = 'none';
-    instance.getElementById('itemAdd').style.display = 'none';
-    instance.getElementById("performanceRemove").addEventListener('click', (event) => removeBooking(booking));
-    cartTable.getElementById("cart-body").appendChild(instance);
+ if(booking!==null){
+   if(booking.bronze.seatings!=='')
+   {
+     total+=Number(booking.bronze.seatings)*Number(booking.bronze.price);
+     let BookingInstance = addBooking('bronze',booking,booking.bronze.seatings, booking.bronze.price)
+     cartTable.getElementById("cart-body").appendChild(BookingInstance);
+   }
+   if(booking.gold.seatings!=='')
+   {
+    total+=Number(booking.gold.seatings)*Number(booking.gold.price);
+     let BookingInstance = addBooking('gold',booking,booking.gold.seatings, booking.gold.price)
+     cartTable.getElementById("cart-body").appendChild(BookingInstance);
+   }
+   if(booking.silver.seatings!=='')
+   {
+    total+=Number(booking.silver.seatings)*Number(booking.silver.price);
+     let BookingInstance = addBooking('bronze',booking,booking.silver.seatings, booking.silver.price)
+     cartTable.getElementById("cart-body").appendChild(BookingInstance);
+   }
 
-  });
+  };
 
   // add all menu item to the template
   selected.forEach(item => {
@@ -66,7 +66,7 @@ function initializeCart() {
   });
 
   //if the cart has any item add the table to the html cart/popup
-  if (selected.length > 0 || bookings.length > 0) {
+  if (selected.length > 0 || bookings!==null) {
     document.getElementById('checkout-cart-popup').appendChild(cartTable.cloneNode(true));
     document.getElementById('checkout-cart').appendChild(cartTable);
     document.querySelectorAll('#grand-total').forEach(i => i.innerHTML = total + 'kr');
@@ -78,10 +78,29 @@ function initializeCart() {
 
 }
 
+function addBooking(type,booking,seatings,price)
+{
+  const template = document.getElementById('template-cart-item');
+  const instance = document.importNode(template.content, true)
+  instance.getElementById('itemImage').setAttribute('src', 'img/' + booking.image);
+  instance.getElementById('itemName').innerHTML = booking.name + '<br/>' + booking.date + "+" + booking.time;
+  instance.getElementById('itemCount').innerHTML = '(' + type + ')' + seatings;
+  instance.getElementById('itemPrice').innerHTML = price + 'kr';
+  let vat = (Number(price) / (1 + (1 / 0.2))).toFixed(2);
+  instance.getElementById('vat').innerHTML = vat + 'kr';
+  let totalBookingPrice = (Number(price) * Number(seatings));
+  instance.getElementById('total').innerHTML = totalBookingPrice + 'kr';
+  instance.getElementById('itemRemove').style.display = 'none';
+  instance.getElementById('itemAdd').style.display = 'none';
+  instance.getElementById("performanceRemove").addEventListener('click', (event) => removeBooking(booking));
+  return instance;
+}
+
 function removeBooking(existingBooking) {
-  let bookings = JSON.parse(localStorage.getItem('bookings'));
-  bookings = bookings.filter(booking => booking.orderId != existingBooking.orderId);
-  localStorage.setItem("bookings", JSON.stringify(bookings));
+  // let bookings = JSON.parse(localStorage.getItem('bookings'));
+  // bookings = bookings.filter(booking => booking.orderId != existingBooking.orderId);
+  // localStorage.setItem("bookings", JSON.stringify(bookings));
+  localStorage.removeItem("bookings");
   initializeCart();
 }
 
@@ -201,7 +220,7 @@ window.onload = () => {
         else {
           var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
           let bookings = JSON.parse(localStorage.getItem('bookings'));
-          if ((bookings != null && bookings.length > 0) || (selected != null && selected.length > 0)) {
+          if ((bookings != null) || (selected != null && selected.length > 0)) {
             console.log("valid");
             // localStorage.clear();
             //create popup and send email
