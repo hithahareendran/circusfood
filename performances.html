@@ -23,13 +23,19 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title" id="title"></h5>
+                <h5 class="card-title" id="title"></h5><span class="float-right" id="category"></span>
                   <div class="row">
                     <div class="col-md-10">
                       <p class="card-text" id="description"></p>
                     </div>
                     <div class="col-md-2">
-                      <button class="btn btn-outline-info btn-lg"><i class="fas fa-plus-circle fa-lg" style=""></i></button>
+                      <button id="modal-button"
+                        class="btn btn-outline-info btn-lg rounded-circle" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#showModal"
+                        data-bs-id="">
+                        <i class="fas fa-plus-circle fa-lg"></i>
+                      </button>
                     </div>
                   </div>
               </div>
@@ -56,29 +62,93 @@
           <div id="categories"></div>
         </div>
           
-          <div class="col-md-9">
-            <!-- Tabs content -->
-            <div class="tab-content" id="main-content">
-            </div>
-            <!-- <div class="tab-content" id="Clown-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="clown"></div>
-            </div>
+        <div class="col-md-9">
             
-            <div class="tab-content" id="Magician-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="magician"></div>
-            </div>
-            
-            <div class="tab-content" id="Acrobate-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="acrobate"></div>
-            </div>
-            <div class="tab-content" id="Rope artist-content">
-              <div class="row row-cols-1 row-cols-md-1 g-4" id="rope"></div>
-            </div> -->
-            <div id="showList"></div>
-          </div>
-      
+          <div id="showList"></div>
+          
         
+        </div>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="showModalLabel">Book your show here</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="alert alert-light" role="alert"></div>
+                <div class="col-md-4">
+                  <div class="card shadow">
+                    <div class="card-body">
+                      <button class="btn btn-outline-info rounded-circle quantity-button">1</button>
+                      <button class="btn btn-outline-info rounded-circle quantity-button">2</button>
+                      <button class="btn btn-outline-info rounded-circle quantity-button">3</button>
+                      <button class="btn btn-outline-info rounded-circle quantity-button">4</button>
+                      <button class="btn btn-outline-info rounded-circle quantity-button">5</button>
+                      <button class="btn btn-outline-info rounded-circle quantity-button">6</button>
+                      <button class="btn btn-dark rounded-circle quantity-button" id="more-seatings-button">More</button>
+                      <div class="seatings" class="d-none">
+                        <div class="border">
+                          <p>Number of seats <span id="seating-quantity"></span></p>
+                        </div>
+                      </div>
+                      <div class="form-group d-none" id="add-seatings">
+                        <label for="quantity">Choose quantity</label>
+                        <input type="number" id="quantity" min="7" max="24" value="7">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="card shadow mb-3 show-card" id="gold">
+                      <h5 class="card-title">Gold</h5>
+                      <p>895 Kr</p>
+                      <div class="card-body">
+                        <p>Seats with a clear view of the stage (no cinema seating so you may have to turn around)</p>
+                        <span class="badge bg-success rounded-pill">Available</span>
+                        <button class="btn btn-outline-success rounded-circle booking-button" data-category="gold" data-id>Book</button>
+                      </div>
+                    </div>
+                    <div id="silver" class="card shadow mb-3 show-card">
+                      <h5 class="card-title">Silver</h5>
+                      <p>795 Kr</p>
+                      <div class="card-body">
+                        <p>Places with a partially obscured view of the stage</p>
+                        <span class="badge bg-success rounded-pill">Available</span>
+                        <button class="btn btn-outline-success rounded-circle booking-button" data-category="silver" data-id>Book</button>
+                      </div>
+                    </div>
+                    <div id="bronze" class="card shadow mb-3 show-card">
+                      <h5 class="card-title">Bronze</h5>
+                      <p>595 Kr</p>
+                      <div class="card-body">
+                        <p>Places with obscured view to the stage</p>
+                        <span class="badge bg-success rounded-pill">Available</span>     
+                        <button class="btn btn-outline-success rounded-circle booking-button" data-category="bronze" data-id>Book</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" id="go-to-payment" class="btn btn-primary">Book</button>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
