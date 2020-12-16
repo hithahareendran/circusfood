@@ -47,6 +47,7 @@ $("#go-to-payment").click(() => {
     booking.orderId = orderId;
     booking.seatings = seatings;
     localStorage.setItem('order', JSON.stringify(booking));
+    window.location.assign("/payment.html");
 
 });
 
