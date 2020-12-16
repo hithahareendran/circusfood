@@ -45,14 +45,10 @@ $(".quantity").change(() => {
     
 });
 
-$("#go-to-payment").click(() => {
-    let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase(); 
-    localStorage.setItem('order', JSON.stringify(booking));
-    window.location.assign("/payment.html");
-});
 
 
 let showModal = document.getElementById('showModal');
+
 showModal.addEventListener('show.bs.modal', function (event) {
     // Button that triggered the modal
     
@@ -69,36 +65,53 @@ showModal.addEventListener('show.bs.modal', function (event) {
     let modalTitle = showModal.querySelector('.modal-title')
     let alert = showModal.querySelector('.alert')
     alert.innerHTML = `<h5>${show.title}</h5><p>${show.description}</p>`;
-    //$('.show-card').removeClass("bg-success");
     
-    //$('.booking-button').removeAttr('data-id');
-    //$('.booking-button').attr('data-id', showId);
-    //$('.booking-button').click(() => console.log(showId));
-    
-    $(".booking-button").click((e) => {
-        const button = $(e.target);
-        let category = button.data('category');
-        $("#seatings-"+category).removeClass("d-none");
-        $("#"+category).addClass('d-none');
-        let seatings = $("#seating-quantity").text();
-        booking.category = category;
-        booking.price = show[category];
-        /* 
+    $(".go-to-payment").click((e) => {
+        //e.preventDefault();
+        const orderId = '#' + Math.random().toString(36).substring(5).toUpperCase();
+        booking.orderId = orderId;
         booking.image = show.thumb;
-        console.log('show ', show)
         booking.showId = show.id;
         booking.time = show.time;
         booking.date = show.date;
-        booking.name = show.title; */
+        booking.name = show.title;
         
-        let table = $('<table class="table">');
+        const gold = $("#gold-seatings").children().last().children();
+        booking.gold.seatings = gold.eq(1).text();
+        booking.gold.price = gold.eq(2).text();
+        
+        const silver = $("#silver-seatings").children().last().children();
+        booking.silver.seatings = silver.eq(1).text();
+        booking.silver.price = silver.eq(2).text();
+
+        const bronze = $("#bronze-seatings").children().last().children();
+        booking.bronze.seatings = bronze.eq(1).text();
+        booking.bronze.price = bronze.eq(2).text();
+
+        localStorage.setItem('bookings', JSON.stringify(booking));
+        //window.location.assign("/payment.html");
+    });
+
+    
+
+    $(".booking-button").click((e) => {
+        const button = $(e.target);
+        
+        let category = button.data('category');
+        $("#seatings-"+category).removeClass("d-none");
+        $("#"+category).addClass('d-none');
+        
+        let seatings = $("#seating-quantity").text();
+        booking.category = category;
+        booking.price = show[category];
+        
+        let table = $(`<table id="${category}-seatings" class="table">`);
         let thead = $(`
         
             <tr>
-                <th>Name</th>
+                
                 <th>Category</th>
-                <th>Date</th>
-                <th>Time</th>
+                
                 <th>Seatings</th>
                 <th>Price</th>
                 <th>Total</th>
@@ -107,10 +120,9 @@ showModal.addEventListener('show.bs.modal', function (event) {
         let tr = $(`
         
             <tr>
-                <td>${show.title}</td>
+                
                 <td>${category}</td>
-                <td>${show.date}</td>
-                <td>${show.time}</td>
+                
                 <td id="seatings-${category}-data">${seatings}</td>
                 <td id="price-${category}">${booking.price}</td>
                 <td id="total-${category}">${seatings*booking.price}</td>
@@ -120,7 +132,8 @@ showModal.addEventListener('show.bs.modal', function (event) {
         thead.appendTo(table);
         tr.appendTo(table);
         $("#seatings-"+category).append(table);
-        let bookingButton = $('<button class="btn">Add to cart</button>').click((e) => {
+        /* let bookingButton = $('<button class="btn">Add to cart</button>').click((e) => {
+            $(e.target).attr("disabled", true);
             let tr = $(e.target).siblings('table').children().last();
             let tableData = tr.children();
             let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase();
@@ -152,7 +165,7 @@ showModal.addEventListener('show.bs.modal', function (event) {
             localStorage.setItem('bookings', JSON.stringify(bookings));
             //console.log('rows ', $(e.target).siblings('table').rows);
             //console.log($(category).prev());
-        })
+        }) */
         $("#seatings-"+category).append(bookingButton);
             
         //$("#order-status").append(table);
@@ -218,7 +231,17 @@ function openTab(event, tabName) {
 // using modules
 window.openTab = openTab;
 
-var booking = {orderId:'', showId: '', name: '', date: '', time: '', image: '', category: '', seatings: '', price:''};
+var booking = {
+    orderId:'', 
+    showId: '', 
+    name: '', 
+    date: '', 
+    time: '', 
+    image: '', 
+    gold: {seatings: '', price: ''}, 
+    silver: {seatings: '', price: ''}, 
+    bronze: {seatings: '', price: ''}
+};
 
 $(document).ready(function() {
     console.log('document loaded');
