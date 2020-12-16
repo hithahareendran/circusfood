@@ -45,17 +45,70 @@ $(".quantity").change(() => {
     
 });
 
+$(".booking-button").click((e) => {
+    const button = $(e.target);
+    const show = shows.find(show => show.id == button.attr('data-id'));
+    e.stopPropagation();
+    let category = button.data('category');
+    $("#seatings-" + category).removeClass("d-none");
+    $("#" + category).addClass('d-none');
+
+
+    booking.price = show[category];
+
+    let rows = $(`
+        
+            <tr>
+                
+                <th>Category</th>
+                
+                <th>Seatings</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>    
+        
+        
+        
+            <tr>
+                
+                <td>${category}</td>
+                
+                <td id="seatings-${category}-data"></td>
+                <td id="price-${category}">${booking.price}</td>
+                <td id="total-${category}"></td>
+            </tr>
+        
+        `);
+    rows.appendTo(`#${category}-seatings`);
+    //$("#seatings-"+category).append(table);
+    let removeCategoryButton = $('<button class="btn btn-light">Empty this category</button>').click((e) => {
+        //$(e.target).siblings('table').remove();
+
+        $(`#${category}-seatings`).empty();
+        console.log('seatings ', $("#" + category + "-seatings").text());
+        $(e.target).remove();
+        console.log('empty btn ', $(e.target));
+        $("#seatings-" + category).addClass('d-none');
+        $("#" + category).removeClass('d-none');
+        $("#add-seatings-" + category).val(7);
+
+    })
+    $("#seatings-" + category).append(removeCategoryButton);
+
+
+});
 
 
 let showModal = document.getElementById('showModal');
 
 showModal.addEventListener('show.bs.modal', function (event) {
     
-    
+    event.stopPropagation();
     let button = event.relatedTarget
     
     let showId = button.getAttribute('data-bs-id');
     let show = shows.find(show => show.id == showId);
+    $('.booking-button').attr('data-id', showId);
     console.log('show ', show);
     console.log('showId', showId);
     
@@ -86,62 +139,11 @@ showModal.addEventListener('show.bs.modal', function (event) {
         booking.bronze.price = bronze.eq(2).text();
 
         localStorage.setItem('bookings', JSON.stringify(booking));
-        //window.location.assign("/payment.html");
     });
 
     
 
-    $(".booking-button").click((e) => {
-        const button = $(e.target);
-        
-        let category = button.data('category');
-        $("#seatings-"+category).removeClass("d-none");
-        $("#"+category).addClass('d-none');
-        
-        let seatings = $("#seating-quantity").text();
-        booking.category = category;
-        booking.price = show[category];
-        
-        let table = $(`<table id="${category}-seatings" class="table">`);
-        let thead = $(`
-        
-            <tr>
-                
-                <th>Category</th>
-                
-                <th>Seatings</th>
-                <th>Price</th>
-                <th>Total</th>
-            </tr>    
-        `);
-        let tr = $(`
-        
-            <tr>
-                
-                <td>${category}</td>
-                
-                <td id="seatings-${category}-data">${seatings}</td>
-                <td id="price-${category}">${booking.price}</td>
-                <td id="total-${category}">${seatings*booking.price}</td>
-            </tr>
-        
-        `);
-        thead.appendTo(table);
-        tr.appendTo(table);
-        $("#seatings-"+category).append(table);
-        let removeCategoryButton = $('<button class="btn btn-light">Empty this category</button>').click((e) => {
-            $(e.target).siblings('table').remove();
-            $(e.target).remove();
-
-            $("#seatings-"+category).addClass('d-none');
-            $("#"+category).removeClass('d-none');
-            $("#add-seatings-"+category).val(7);
-
-        })
-        $("#seatings-" + category).append(removeCategoryButton);  
     
-        
-    });
     
 });
 showModal.addEventListener('hide.bs.modal', function(event) {
