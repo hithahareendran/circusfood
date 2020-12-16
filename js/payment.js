@@ -163,7 +163,7 @@ function createAndShowModelPopup() {
     item.style.display = 'none';
   }
 
-  //sendEmail(referenceNo, email);
+  sendEmail(referenceNo, email);
 
 
   //show popup
@@ -222,7 +222,7 @@ window.onload = () => {
           let bookings = JSON.parse(localStorage.getItem('bookings'));
           if ((bookings != null) || (selected != null && selected.length > 0)) {
             console.log("valid");
-            // localStorage.clear();
+             localStorage.clear();
             //create popup and send email
             createAndShowModelPopup();
           }
