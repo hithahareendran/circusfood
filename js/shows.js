@@ -125,6 +125,12 @@ showModal.addEventListener('show.bs.modal', function (event) {
             let tableData = tr.children();
             let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase();
             booking.orderId = orderId;
+            const menuButton = $(`
+                <a href="menu.html" class="btn" data-order-id="${orderId}">
+                    Add a menu for this booking
+                </a>
+            `);
+            $("#seatings-" + category).append(menuButton);
 
             
             booking.seatings = tableData.eq(4).text();
