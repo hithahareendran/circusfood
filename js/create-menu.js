@@ -72,44 +72,45 @@ function createNav() {
     nav.append(cart);
     $('body').prepend(nav);
 
-    refreshCart()
+    refreshMenuCart();
 
-    function refreshCart()
+}
+
+function refreshMenuCart()
+{
+    let booking = JSON.parse(localStorage.getItem('bookings'));
+    var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
+    let total=0, totalCount=0;
+    if(booking!==null)
     {
-        let booking = JSON.parse(localStorage.getItem('bookings'));
-        var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
-        let total=0, totalCount=0;
-        if(booking!==null)
+        if(booking.bronze.seatings!=='')
         {
-            if(booking.bronze.seatings!=='')
-            {
-                total+=Number(booking.bronze.seatings)*Number(booking.bronze.price);
-                totalCount+=Number(booking.bronze.seatings);
-            }
-            if(booking.gold.seatings!=='')
-            {
-                total+=Number(booking.gold.seatings)*Number(booking.gold.price);
-                totalCount+=Number(booking.gold.seatings);
-            }
-            if(booking.silver.seatings!=='')
-            {
-                total+=Number(booking.silver.seatings)*Number(booking.silver.price);
-                totalCount+=Number(booking.silver.seatings);
-            }
+            total+=Number(booking.bronze.seatings)*Number(booking.bronze.price);
+            totalCount+=Number(booking.bronze.seatings);
         }
-        if(selected!==null)
+        if(booking.gold.seatings!=='')
         {
-            selected.forEach(item =>{
-                total+= Number(item.itemPrice) * Number(item.count)
-                totalCount+=Number(item.count);
-            });
+            total+=Number(booking.gold.seatings)*Number(booking.gold.price);
+            totalCount+=Number(booking.gold.seatings);
         }
-        if(total!==0)
+        if(booking.silver.seatings!=='')
         {
-            document.getElementById("item-total").innerHTML = " items("+totalCount+")";
-            document.getElementById("item-price").innerHTML = "price "+total+"kr";
-            
+            total+=Number(booking.silver.seatings)*Number(booking.silver.price);
+            totalCount+=Number(booking.silver.seatings);
         }
-       
     }
+    if(selected!==null)
+    {
+        selected.forEach(item =>{
+            total+= Number(item.itemPrice) * Number(item.count)
+            totalCount+=Number(item.count);
+        });
+    }
+    if(total!==0)
+    {
+        document.getElementById("item-total").innerHTML = " items("+totalCount+")";
+        document.getElementById("item-price").innerHTML = "price "+total+"kr";
+        
+    }
+   
 }

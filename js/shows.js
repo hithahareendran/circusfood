@@ -89,6 +89,7 @@ showModal.addEventListener('show.bs.modal', function (event) {
         booking.bronze.price = bronze.eq(2).text();
 
         localStorage.setItem('bookings', JSON.stringify(booking));
+        refreshMenuCart();
         //window.location.assign("/payment.html");
     });
 

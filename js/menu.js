@@ -88,6 +88,8 @@ function fillCart() {
     instance.getElementById('itemRemove').style.display = "none";
     document.getElementById('itemList').appendChild(instance);
   }
+
+  refreshMenuCart();
   
 
 }

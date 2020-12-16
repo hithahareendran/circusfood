@@ -75,6 +75,7 @@ function initializeCart() {
     document.getElementById('checkout-cart').innerHTML = "<div>No item ordered</div>";
     document.getElementById('checkout-cart-popup').innerHTML = "<div>No item ordered</div>";
   }
+  refreshMenuCart();
 
 }
 
