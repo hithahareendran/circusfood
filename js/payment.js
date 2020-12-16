@@ -1,15 +1,17 @@
-const cartItems = [
-];
 
 //get items from storage, create cart table and add to cart and popup
 function initializeCart() {
   //get shows
-  let booking = JSON.parse(localStorage.getItem('order'));
+  let bookings = JSON.parse(localStorage.getItem('bookings'));
+  if (bookings === null) {
+    localStorage.setItem("bookings", JSON.stringify([]));
+    bookings = JSON.parse(localStorage.getItem('bookings'));
+  }
 
   //get or intialize cart from local storage
   var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
   if (selected === null) {
-    localStorage.setItem("menu-cart-items", JSON.stringify(cartItems));
+    localStorage.setItem("menu-cart-items", JSON.stringify([]));
     selected = JSON.parse(localStorage.getItem("menu-cart-items"));
   }
 
@@ -24,21 +26,24 @@ function initializeCart() {
   document.getElementById('checkout-cart-popup').innerHTML = "";
 
   //if there is booking add it as the first item on the table
-  if (booking !== null) {
-    console.log(booking);
+  bookings.forEach(booking => {
     const template = document.getElementById('template-cart-item');
     const instance = document.importNode(template.content, true)
     instance.getElementById('itemImage').setAttribute('src', 'img/' + booking.image);
-    instance.getElementById('itemName').innerHTML = booking.name + '<br/>' + booking.date+"+"+booking.time;
-    instance.getElementById('itemCount').innerHTML = '('+booking.category +')' + booking.seatings;
+    instance.getElementById('itemName').innerHTML = booking.name + '<br/>' + booking.date + "+" + booking.time;
+    instance.getElementById('itemCount').innerHTML = '(' + booking.category + ')' + booking.seatings;
     instance.getElementById('itemPrice').innerHTML = booking.price + 'kr';
     let vat = (Number(booking.price) / (1 + (1 / 0.2))).toFixed(2);
     instance.getElementById('vat').innerHTML = vat + 'kr';
-    total += Number(booking.price);
-    instance.getElementById('total').innerHTML = Number(booking.price) + 'kr';
-    instance.getElementById('adjust').innerHTML = "<span class='badge bg-secondary rounded-pill' onclick='removeBooking()'><i class='fas fa-trash-alt'></i></span>";
+    let totalBookingPrice = (Number(booking.price) * Number(booking.seatings));
+    total += totalBookingPrice;
+    instance.getElementById('total').innerHTML = totalBookingPrice + 'kr';
+    instance.getElementById('itemRemove').style.display = 'none';
+    instance.getElementById('itemAdd').style.display = 'none';
+    instance.getElementById("performanceRemove").addEventListener('click', (event) => removeBooking(booking));
     cartTable.getElementById("cart-body").appendChild(instance);
-  }
+
+  });
 
   // add all menu item to the template
   selected.forEach(item => {
@@ -53,6 +58,7 @@ function initializeCart() {
     let totalPrice = Number(item.itemPrice) * Number(item.count)
     total += totalPrice;
     instance.getElementById('total').innerHTML = totalPrice + 'kr';
+    instance.getElementById('performanceRemove').style.display = 'none';
     instance.getElementById("itemAdd").addEventListener('click', (event) => addCount(item.itemId));
     instance.getElementById("itemRemove").addEventListener('click', (event) => removeCount(item.itemId));
     cartTable.getElementById("cart-body").appendChild(instance);
@@ -60,7 +66,7 @@ function initializeCart() {
   });
 
   //if the cart has any item add the table to the html cart/popup
-  if (selected.length > 0 || booking!==null) {
+  if (selected.length > 0 || bookings.length > 0) {
     document.getElementById('checkout-cart-popup').appendChild(cartTable.cloneNode(true));
     document.getElementById('checkout-cart').appendChild(cartTable);
     document.querySelectorAll('#grand-total').forEach(i => i.innerHTML = total + 'kr');
@@ -72,9 +78,10 @@ function initializeCart() {
 
 }
 
-function removeBooking()
-{
-  localStorage.removeItem('order');
+function removeBooking(existingBooking) {
+  let bookings = JSON.parse(localStorage.getItem('bookings'));
+  bookings = bookings.filter(booking => booking.orderId != existingBooking.orderId);
+  localStorage.setItem("bookings", JSON.stringify(bookings));
   initializeCart();
 }
 
@@ -132,6 +139,12 @@ function createAndShowModelPopup() {
   let email = document.getElementById('email').value;
   document.getElementById('email-comment').innerHTML = 'A reciept will be send to email ' + email +
     ' or an sms on number ' + document.getElementById('contact').value + " will be send to you.";
+  var list = document.getElementsByClassName("adjust");
+  for (let item of list) {
+    item.style.display = 'none';
+  }
+
+  //sendEmail(referenceNo, email);
 
 
   //show popup
@@ -145,11 +158,27 @@ function createAndShowModelPopup() {
 
 function checkoutComplete() {
   document.getElementById("payment-form").reset();
-  window.location.assign("/home.html");
+  window.location.assign("/index.html");
+}
+
+/*https://www.pepipost.com/tutorials/how-to-send-emails-with-javascript/ */
+function sendEmail(referenceNo, email) {
+  Email.send({
+    Host: "smtp.gmail.com",
+    Username: "circusfoodrestaurant@gmail.com",
+    Password: "circusfoodrestaurant123",
+    To: email,
+    From: "circusfoodrestaurant@gmail.com",
+    Subject: "Thank you for ordering food from circus food restaturant,  your order reference number #" + referenceNo,
+    Body: document.getElementById('email-content').innerHTML,
+  }).then(
+    message => console.log("mail sent successfully")
+  );
 }
 
 
 window.onload = () => {
+  createNav();
   initializeCart();
 }
 
@@ -171,10 +200,10 @@ window.onload = () => {
         }
         else {
           var selected = JSON.parse(localStorage.getItem("menu-cart-items"));
-          let booking = JSON.parse(localStorage.getItem('order'));
-          if (booking!=null || (selected != null && selected.length > 0)) {
+          let bookings = JSON.parse(localStorage.getItem('bookings'));
+          if ((bookings != null && bookings.length > 0) || (selected != null && selected.length > 0)) {
             console.log("valid");
-            localStorage.clear();
+            // localStorage.clear();
             //create popup and send email
             createAndShowModelPopup();
           }

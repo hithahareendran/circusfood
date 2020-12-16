@@ -9,12 +9,13 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"
     integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
 
   <!-- specific css with customized tab link -->
   <!-- refered css from https://bootstrapious.com/p/bootstrap-vertical-tabs -->
@@ -23,6 +24,7 @@
 
   <!-- specific js with all functiona and initial load method -->
   <script src="js/create-menu.js"></script>
+  <script type="text/javascript" src="js/menu-items.js"></script>
   <script src="js/menu.js"></script>
   <title>The Food Circus</title>
 
@@ -56,7 +58,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="row">
-                    <a href="#" class="btn btn-primary button" id="order">Order item</a>
+                    <button class="btn btn-primary button" id="order">Order item</button>
                   </div>
                 </div>
               </div>
@@ -75,16 +77,21 @@
             class="img-fluid  rounded-circle"></div>
         <div class="col-md-4" id="itemName">asdf</div>
         <div class="col-md-2" id="itemPrice">0</div>
-        <div class="col-md-4"><span class="badge bg-secondary rounded-pill" id="itemAdd">+</span>
+        <div class="col-md-4 text-center">
+          <div class="col">
+          <span class="badge bg-danger rounded-pill cursor" data-toggle="tooltip" title="Click to remove item"
+            id="itemRemove">-</span>
           <span class="badge bg-primary rounded-pill" id="itemCount">1</span>
-          <span href="#" class="badge bg-secondary rounded-pill" id="itemRemove">-</span>
+          <span class="badge bg-success rounded-pill cursor" data-toggle="tooltip" title="Click to add same item"
+            id="itemAdd">+</span>
+          </div>
         </div>
       </div>
     </li>
   </template>
 
   <template id="template-carousel-image">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       <div class="img-box">
         <div class="hover-container" id="hover-container">
           <img id="carousel-image" src="img/item1.jpg" class="img-fluid" alt="">
@@ -106,7 +113,8 @@
       <div class="container">
 
         <div class="row">
-          <div class="col-md-9 col-center">
+          <!-- carousel-->
+          <div class="col-md-12 col-center">
             <div id="menu-carosel" class="carousel slide" data-ride="carousel" data-interval="0">
               <!-- Wrapper for carousel items -->
               <div class="carousel-inner">
@@ -122,7 +130,7 @@
                   <div class="row" id="carousel-drink-cource-menu">
                   </div>
                 </div>
-                <div class="carousel-item" >
+                <div class="carousel-item">
                   <div class="row" id="carousel-child-cource-menu">
                   </div>
                 </div>
@@ -148,21 +156,25 @@
 
                 <!-- refered css from https://bootstrapious.com/p/bootstrap-vertical-tabs -->
                 <div class="nav flex-column nav-pills nav-pills-custom" role="tablist" aria-orientation="vertical">
-                  <a class="nav-link mb-3 p-3 shadow active" id="main" href="#" onclick="openTab(event,'main-content')">
+                  <a class="nav-link mb-3 p-3 shadow active" data-bs-toggle="pill" id="main" href="#main-content"
+                    role="tab" aria-controls="main-content" aria-selected="true">
                     <i class="fa fa-pizza-slice"></i>
                     <span class="font-weight-bold small text-uppercase">Main Course</span></a>
 
-                  <a class="nav-link mb-3 p-3 shadow" id="veg" href="#" onclick="openTab(event, 'veg-content')">
+                  <a class="nav-link mb-3 p-3 shadow" data-bs-toggle="pill" id="veg" href="#veg-content" role="tab"
+                    aria-controls="veg-content" aria-selected="false">
                     <i class="fas fa-carrot"></i>
                     <span class="font-weight-bold small text-uppercase">Vegiterian Menu</span></a>
 
-                  <a class="nav-link mb-3 p-3 shadow" id="drink" href="#" onclick="openTab(event, 'drink-content')">
+                  <a class="nav-link mb-3 p-3 shadow" data-bs-toggle="pill" id="drink" href="#drink-content" role="tab"
+                    aria-controls="drink-content" aria-selected="false">
                     <i class="fas fa-cocktail"></i>
                     <span class="font-weight-bold small text-uppercase">Drinks Menu</span></a>
 
-                  <a class="nav-link mb-3 p-3 shadow" id="child" href="#" onclick="openTab(event,'child-content')">
+                  <a class="nav-link mb-3 p-3 shadow" data-bs-toggle="pill" id="child" href="#child-content" role="tab"
+                    aria-controls="child-content" aria-selected="false">
                     <i class="fas fa-hotdog"></i>
-                    <span class="font-weight-bold small text-uppercase">Child Menu</span></a>
+                    <span class="font-weight-bold small text-uppercase">Dessert Menu</span></a>
                 </div>
               </div>
 
@@ -188,8 +200,12 @@
                     <div>Empty</div>
                   </li>
                 </ul>
-                <div class="text-center"><button type="button" id="checkout-button"
-                    class="btn btn-primary invisible button" onclick="doCheckout()">Checkout</button></div>
+              </div>
+              <div class="row">
+                <div class="col text-center"><button type="button" id="checkout-button"
+                  class="btn btn-primary button" onclick="doCheckout()">payment</button></div>
+                <div class="col text-center"><button type="button" id="show-button"
+                  class="btn btn-primary  button" onclick="doCheckout()">perfromance</button></div>
               </div>
 
             </div>
@@ -197,23 +213,25 @@
 
             <div class="col-md-9">
               <!-- Tabs content -->
-              <div class="tab-content" id="main-content">
-                <div class="row row-cols-1 row-cols-md-1 g-4" id="main-cource-menu">
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="main-content" role="tabpanel" aria-labelledby="main">
+                  <div class="row row-cols-1 row-cols-md-1 g-4" id="main-cource-menu">
+                  </div>
                 </div>
-              </div>
 
-              <div class="tab-content" id="veg-content">
-                <div class="row row-cols-1 row-cols-md-1 g-4" id="veg-cource-menu">
+                <div class="tab-pane fade show" id="veg-content" role="tabpanel" aria-labelledby="veg">
+                  <div class="row row-cols-1 row-cols-md-1 g-4" id="veg-cource-menu">
+                  </div>
                 </div>
-              </div>
 
-              <div class="tab-content" id="drink-content">
-                <div class="row row-cols-1 row-cols-md-1 g-4" id="drink-cource-menu">
+                <div class="tab-pane fade show" id="drink-content" role="tabpanel" aria-labelledby="drink">
+                  <div class="row row-cols-1 row-cols-md-1 g-4" id="drink-cource-menu">
+                  </div>
                 </div>
-              </div>
 
-              <div class="tab-content" id="child-content">
-                <div class="row row-cols-1 row-cols-md-1 g-4" id="child-cource-menu">
+                <div class="tab-pane fade show" id="child-content" role="tabpanel" aria-labelledby="child">
+                  <div class="row row-cols-1 row-cols-md-1 g-4" id="child-cource-menu">
+                  </div>
                 </div>
               </div>
             </div>

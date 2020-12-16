@@ -78,10 +78,8 @@ body {
     padding: 0;
 }
 .card-header{
-    background: linear-gradient(60deg,#ab47bc,#7b1fa2); 
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
-    /* background: linear-gradient(60deg,#ef5350,#d32f2f);
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(244,67,54,.6); */
+    background: linear-gradient(60deg,#ef5350,#d32f2f);
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(244,67,54,.6); 
 }
 
 @font-face {
@@ -234,11 +232,9 @@ body {
 .input-group{
     width: 150px;
     margin: 5px auto;
+
 }
-.item-count-div {
+#item-count-div {
     text-align: center;
-}
-#item-count {
-    vertical-align: middle;
     margin: 5px;
 }
