@@ -48,6 +48,7 @@ $(".quantity").change(() => {
 $("#go-to-payment").click(() => {
     let orderId = '#' + Math.random().toString(36).substring(5).toUpperCase(); 
     localStorage.setItem('order', JSON.stringify(booking));
+    window.location.assign("/payment.html");
 });
 
 
