@@ -62,9 +62,9 @@ showModal.addEventListener('show.bs.modal', function (event) {
     // and then do the updating in a callback.
     //
     // Update the modal's content.
-    let modalTitle = showModal.querySelector('.modal-title')
+    
     let alert = showModal.querySelector('.alert')
-    alert.innerHTML = `<h5>${show.title}</h5><p>${show.description}</p>`;
+    alert.innerHTML = `<h5>${show.title}</h5><span class="fw-lighter text-end">${show.date} ${show.time}</span><p>${show.description}</p>`;
     
     $(".go-to-payment").click((e) => {
         //e.preventDefault();
@@ -132,6 +132,16 @@ showModal.addEventListener('show.bs.modal', function (event) {
         thead.appendTo(table);
         tr.appendTo(table);
         $("#seatings-"+category).append(table);
+        let removeCategoryButton = $('<button class="btn btn-light">Empty this category</button>').click((e) => {
+            $(e.target).siblings('table').remove();
+            $(e.target).remove();
+
+            $("#seatings-"+category).addClass('d-none');
+            $("#"+category).removeClass('d-none');
+            $("#add-seatings-"+category).val(7);
+
+        })
+        $("#seatings-" + category).append(removeCategoryButton);  
         /* let bookingButton = $('<button class="btn">Add to cart</button>').click((e) => {
             $(e.target).attr("disabled", true);
             let tr = $(e.target).siblings('table').children().last();
@@ -166,7 +176,7 @@ showModal.addEventListener('show.bs.modal', function (event) {
             //console.log('rows ', $(e.target).siblings('table').rows);
             //console.log($(category).prev());
         }) */
-        $("#seatings-"+category).append(bookingButton);
+        //$("#seatings-"+category).append(bookingButton);
             
         //$("#order-status").append(table);
         
@@ -174,7 +184,6 @@ showModal.addEventListener('show.bs.modal', function (event) {
         
     });
     
-    modalTitle.textContent = 'Seating booking for ' + show.date + ' ' + show.time
 });
 showModal.addEventListener('hide.bs.modal', function(event) {
     console.log('closing modal');
