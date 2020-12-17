@@ -30,4 +30,5 @@ function submitfeedback() {
     feedback.comments = document.getElementById("comments").value;
 
     localStorage.setItem("feedback", JSON.stringify(feedback));
+    document.getElementById("feedback-form").reset();
 }
