@@ -31,6 +31,20 @@
     </script>
     <!-- nav end -->
     <style>
+        @font-face {
+            font-family: "myFont";
+            src: url("./Fonts/attraction.ttf") format("truetype");
+        }
+        
+        #landingheader {
+            padding: 50px 0 50px 0;
+            color: #343a40;
+            font-family: "myFont";
+        }
+        
+        #landingheader h1 {
+            font-size: 80px;
+        }
         /* Make the image fully responsive */
         
         .carousel-inner img {
@@ -61,13 +75,15 @@
                         <img src="img/circus_img1.jpg" width="500" height="100">
                     </div>
                 </div>
-
-                <h1 class="text-center">FEEDBACK</h1>
-                <div class="p-3 mb-2 bg-info text-white">
-                    <h4 class="text-center font-weight-bold">Share your experience</h4>
+                <div id="landingheader" class="container-fluid text-center">
+                    <h1 class="display-4 font-weight-normal">Feedback</h1>
+                    <div class="p-3 mb-2 bg-info text-white">
+                        <h4 class="lead font-weight-normal">Share your experience</h4>
+                    </div>
                 </div>
                 <p class="text-center"> We hope that you’ve enjoyed our show and food! We would be grateful if you could complete this form so that we can continue to make each show the best it can be.</p>
-                <form class="form-horizontal">
+
+                <form class="form-horizontal" id="feedback-form">
                     <div class="container p-3 mb-2 bg-light text-dark">
 
                         <div class="form-group">
@@ -138,7 +154,7 @@
                             <label class="control-label col-sm-2" for="overall">OverAll Experience:</label>
                             <div class="col-sm-10">
                                 <label class="radio-inline">
-                                        <input type="radio" name="overall" checked id="excellent">Excellent
+                                        <input type="radio" name="overall" checked id="Excellent">Excellent
                                       </label>
                                 <label class="radio-inline">
                                         <input type="radio" name="overall" id="Good">Good
