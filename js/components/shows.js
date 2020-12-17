@@ -1,4 +1,4 @@
-export const shows = [
+export var shows = [
     { 
         id: "1", 
         date: '2021-02-05',
@@ -250,7 +250,8 @@ export const categories = [
     { id: 10, name: 'Acrobalance', icon: '<img src="img/circus1_small.jpg"/>', slug: 'acrobalance'},
     { id: 10, name: 'Hula Hoops', icon: '<img src="img/circus1_small.jpg"/>', slug: 'hula-hoops' },
     { id: 10, name: 'Acrobatics', icon: '<img src="img/circus1_small.jpg"/>', slug: 'acrobatics' }
-
-
-
-]
+    
+    
+    
+];
+//export categories; 
