@@ -2,7 +2,7 @@ export const shows = [
     { 
         id: "1", 
         date: '2021-02-05',
-        time: '6:20', 
+        time: '6:20 PM', 
         title: 'Amazing show', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -18,7 +18,7 @@ export const shows = [
     { 
         id: "2", 
         date: '2021-02-06', 
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Fantastic show', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -35,7 +35,7 @@ export const shows = [
         id: "3", 
         date: '2021-02-12', 
         title: 'Magic Evening', 
-        time: '6:20',
+        time: '6:20 PM',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
         thumb: 'circus1_small.jpg', 
@@ -50,8 +50,8 @@ export const shows = [
     { 
         id: "4", 
         date: '2021-02-13', 
-        time: '6:20',
-        title: '', 
+        time: '6:20 PM',
+        title: 'Magic Evening', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
         thumb: 'circus2_small.jpg', 
@@ -65,7 +65,7 @@ export const shows = [
     { 
         id: "5", 
         date: '2021-02-19', 
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -80,7 +80,7 @@ export const shows = [
     { 
         id: "6", 
         date: '2021-02-20', 
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -95,7 +95,7 @@ export const shows = [
     { 
         id: "7", 
         date: '2021-03-05', 
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Shown name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -110,7 +110,7 @@ export const shows = [
     { 
         id: "8", 
         date: '2021-03-06', 
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
@@ -125,7 +125,7 @@ export const shows = [
     {
         id: "9",
         date: '2021-03-12',
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -140,7 +140,7 @@ export const shows = [
     {
         id: "10",
         date: '2021-03-20',
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -155,7 +155,7 @@ export const shows = [
     {
         id: "11",
         date: '2021-03-26',
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -170,7 +170,7 @@ export const shows = [
     {
         id: "12",
         date: '2021-06-05',
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -186,7 +186,7 @@ export const shows = [
     {
         id: "13",
         date: '2021-06-04',
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -201,7 +201,7 @@ export const shows = [
     {
         id: "14",
         date: '2022-01-11',
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -216,7 +216,7 @@ export const shows = [
     {
         id: "15",
         date: '2023-01-17',
-        time: '6:20',
+        time: '6:20 PM',
         title: 'Show name',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
         image: '',
@@ -232,9 +232,25 @@ export const shows = [
 
 ];
 export const categories = [
-    { id: 1, name: 'Clown', icon: '<img src="img/circus1_small.jpg"/>', slug:'clown' },
-    { id: 2, name: 'Acrobate', icon: '<img src="img/circus1_small.jpg"/>', slug:'acrobate' },
-    { id: 3, name: 'Rope artist', icon: '<img src="img/circus1_small.jpg"/>', slug:"rope-artist"},
-    { id: 4, name: 'Magician', icon: '<img src="img/circus1_small.jpg"/>', slug: 'magician' }
+    { id: 1, name: 'Burlesque', icon: '<img src="img/circus1_small.jpg"/>', slug:'burlesque' },
+    { id: 2, name: 'Contemporary Circus', icon: '<img src="img/circus1_small.jpg"/>', slug:'contemporary' },
+    { id: 3, name: 'Aerial Dance', icon: '<img src="img/circus1_small.jpg"/>', slug:"aerial-dance"},
+    { id: 4, name: 'Corde Lisse', icon: '<img src="img/circus1_small.jpg"/>', slug: 'corde-lisse' },
+    { id: 5, name: 'Cradle', icon: '<img src="img/circus1_small.jpg"/>', slug: 'cradle' },
+    { id: 6, name: 'Lyra', icon: '<img src="img/circus1_small.jpg"/>', slug: 'lyra' },
+    { id: 7, name: 'Cloud Swing', icon: '<img src="img/circus1_small.jpg"/>', slug: 'cloud-swing' },
+    { id: 8, name: 'Aerial Net', icon: '<img src="img/circus1_small.jpg"/>', slug: 'aerial-net' },
+    { id: 9, name: 'Double Trapeze', icon: '<img src="img/circus1_small.jpg"/>', slug: 'double-trapeze' },
+    { id: 10, name: 'Silks', icon: '<img src="img/circus1_small.jpg"/>', slug: 'silks' },
+    { id: 10, name: 'Bicycling', icon: '<img src="img/circus1_small.jpg"/>', slug: 'bicycling' },
+    { id: 10, name: 'Clown', icon: '<img src="img/circus1_small.jpg"/>', slug: 'clown' },
+    { id: 10, name: 'Character', icon: '<img src="img/circus1_small.jpg"/>', slug: 'character' },
+    { id: 10, name: 'Dance', icon: '<img src="img/circus1_small.jpg"/>', slug: 'dance' },
+    { id: 10, name: 'Pole', icon: '<img src="img/circus1_small.jpg"/>', slug: 'pole' },
+    { id: 10, name: 'Acrobalance', icon: '<img src="img/circus1_small.jpg"/>', slug: 'acrobalance'},
+    { id: 10, name: 'Hula Hoops', icon: '<img src="img/circus1_small.jpg"/>', slug: 'hula-hoops' },
+    { id: 10, name: 'Acrobatics', icon: '<img src="img/circus1_small.jpg"/>', slug: 'acrobatics' }
+
+
 
 ]
