@@ -132,7 +132,7 @@
     <!-- Loads the our navbar, using ajax load() -->
     <script src="./common/common.js"></script>
     <script>
-      
+    // when using onclick strategy....
       function performanceButton1(date) {
         console.log(date);
       
@@ -142,7 +142,7 @@
         filterShowsByDate(date)
         });
       }  
-// Tested by placing below in calender.js. Not working.
+// -----------Tested by placing below in calender.js. Not working.---------------
       $(function() {
     
       // detect url hash changes and fire off filterOneShow
@@ -152,7 +152,7 @@
 
     function filterOneShow(date) {
       if (window.location.hash == "2021-02-05") 
-        loadAccountInformation("2021-02-05");
+      filterShowsByDate("2021-02-05");
       }
 
       
