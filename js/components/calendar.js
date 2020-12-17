@@ -10,11 +10,11 @@ export function calendar(year = null, month = null) {
     let daysInMonth = getDaysInMonth(date.getFullYear(), date.getMonth() + 1);
     //console.log('days in month ', daysInMonth);
     let fragment = document.createDocumentFragment();
-    let table = $("<table>").addClass("table");
+    let table = $("<table>").addClass("table table-sm table-responsive");
     let caption = $("<caption class='caption-top text-center'>");
     let dateYear = `<span> ${months[date.getMonth()]} ${date.getFullYear()} </span>`;
-    let prevMonth = $('<button class="btn btn-sm text-white rounded-circle change-month"><i class="fas fa-arrow-left fa-lg"></i>');
-    let nextMonth = $('<button class="btn btn-sm text-white rounded-circle change-month"><i class="fas fa-arrow-right fa-lg"></i>');
+    let prevMonth = $('<button class="btn btn-sm text-white btn-info rounded-circle change-month"><i class="fas fa-arrow-circle-left fa-lg"></i>');
+    let nextMonth = $('<button class="btn btn-sm text-white btn-info rounded-circle change-month"><i class="fas fa-arrow-circle-right fa-lg"></i>');
     nextMonth.click(function() {
         console.log('change month');
         $("#calendar").empty();
