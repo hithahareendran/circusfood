@@ -14,7 +14,7 @@ function addShows() {
         $(instance).find('#category').text(category.name);
         //$(instance).find('#price').text(show.price + 'Kr');
         $(instance).find('#description').text(show.description);
-        $(instance).find('#date').text(show.date + ' ' + show.time);
+        $(instance).find('#date').text(show.time + ' ' + new Date(show.date).toLocaleDateString("en-US"));
         //$(instance).find('content').text(show.content);
         $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
         $(instance).find('#modal-button').attr('data-bs-id', show.id);
@@ -81,7 +81,7 @@ $(".booking-button").click((e) => {
         `);
     rows.appendTo(`#${category}-seatings`);
     //$("#seatings-"+category).append(table);
-    let removeCategoryButton = $('<button class="btn btn-light">Empty this category</button>').click((e) => {
+    let removeCategoryButton = $('<button class="btn button rounded mt-2">Empty this category</button>').click((e) => {
         //$(e.target).siblings('table').remove();
 
         $(`#${category}-seatings`).empty();
@@ -112,9 +112,17 @@ showModal.addEventListener('show.bs.modal', function (event) {
     console.log('show ', show);
     console.log('showId', showId);
     
-    
+    $("#gold-price").text(show.gold + " Kr");
+    $("#silver-price").text(show.silver + " Kr");
+    $("#bronze-price").text(show.bronze + " Kr");
     let alert = showModal.querySelector('.alert')
-    alert.innerHTML = `<h5>${show.title}</h5><span class="fw-lighter text-end">${show.date} ${show.time}</span><p>${show.description}</p>`;
+    alert.innerHTML = `
+        <div class="d-flex justify-content-between">
+            <h5>${show.title}</h5>
+            <span class="fw-lighter text-end">${show.date} ${show.time}</span>
+        </div>
+        <article>${show.description}</article>
+    `;
     
     $(".go-to-payment").click((e) => {
         //e.preventDefault();
@@ -155,10 +163,10 @@ showModal.addEventListener('hide.bs.modal', function(event) {
 //const categories = [...new Set(shows.map(show => show.category))];
 console.log('categories ', categories);
 function categoriesAsTabs(categories) {
-    let ul = $('<ul class="nav nav-pills flex-column">');
+    let ul = $('<ul class="nav nav-pills-custom flex-column">');
     let li = $('<li class="nav-item">');
     li.append(`
-            <a href="#" id="main" class="nav-link bg-info mb-3 p-3 shadow active tab-item" aria-current="page" 
+            <a href="#" id="main" class="nav-link mb-3 p-3 shadow active tab-item" aria-current="page" 
             onclick="openTab(event, 'all')">All shows</a>
     `);
 
