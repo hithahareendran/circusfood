@@ -1,15 +1,11 @@
 import { shows, categories } from './components/shows.js';
-import { calendar } from './components/calendar.js';
+import { calendar, filterShowsByDate } from './components/calendar.js';
 
 
 
 function addShows() {
-    let date = window.location.search.match(/date=([^&]*)/)[1];
-    console.log('date ', date);
-    if (date != null) {
-        let filteredShows = shows.filter(show => show.date == date);    
-        filteredShows.forEach(show => {
-            //$(".show-item").filter((index, card) => card.innerText.includes(date) ? card.style.display = "block" : card.style.display = "none");
+    let date = window.location.search.match(/date=([^&]*)/);
+            shows.forEach(show => {
             const list = $('#showList');
             const template = document.getElementById('template-show-item');
             const instance = document.importNode(template.content, true);
@@ -23,38 +19,17 @@ function addShows() {
             //$(instance).find('content').text(show.content);
             $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
             $(instance).find('#modal-button').attr('data-bs-id', show.id);
-            /* $(instance).find('#modal-button').click(() => {
-                console.log('clicker');
-                openModal();
-            }); */
+            
             list.append(instance);
         });
-    } else {
-
-        shows.forEach(show => {
-            //$(".show-item").filter((index, card) => card.innerText.includes(date) ? card.style.display = "block" : card.style.display = "none");
-            const list = $('#showList');
-            const template = document.getElementById('template-show-item');
-            const instance = document.importNode(template.content, true);
-            const category = categories.find(cat => cat.id == show.category);
-            console.log('category ', category.name);
-            $(instance).find('#title').text(show.title);
-            $(instance).find('#category').text(category.name);
-            //$(instance).find('#price').text(show.price + 'Kr');
-            $(instance).find('#description').text(show.description);
-            $(instance).find('#date').text(show.date + ' @ ' + show.time);
-            //$(instance).find('content').text(show.content);
-            $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
-            $(instance).find('#modal-button').attr('data-bs-id', show.id);
-            /* $(instance).find('#modal-button').click(() => {
-                console.log('clicker');
-                openModal();
-            }); */
-            list.append(instance);
-        });
-    }
-}
-$(".quantity-button").click(() => {
+        
+        if (date != null) {
+            filterShowsByDate(date[1]);
+            window.history.pushState({}, document.title, "/" + "performances.html");
+        }
+        
+    } 
+        $(".quantity-button").click(() => {
     //console.log('button clicked ', event.target);
     let category = $(event.target).parent().attr('id').split("-")[1];
     console.log('category ', category);
