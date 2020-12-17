@@ -231,3 +231,13 @@ $(document).ready(function() {
     //$("#main").click();
 }); 
     
+
+// window.onload = () => {
+//     let date = window.location.search.match(/date=([^&]*)/)[1];
+//     let showItems = document.getElementsByClassName("show-item");
+//     forEach(item in showItems)
+//     {
+//         console.log(item.innerText);
+//     }
+    
+// }
