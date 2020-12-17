@@ -14,7 +14,7 @@ function addShows() {
         $(instance).find('#category').text(category.name);
         //$(instance).find('#price').text(show.price + 'Kr');
         $(instance).find('#description').text(show.description);
-        $(instance).find('#date').text(show.time + ' ' + new Date(show.date).toLocaleDateString("en-US"));
+        $(instance).find('#date').text(show.date + ' at ' + show.time);
         //$(instance).find('content').text(show.content);
         $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
         $(instance).find('#modal-button').attr('data-bs-id', show.id);
