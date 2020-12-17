@@ -103,7 +103,7 @@
                         <button class="btn button rounded-circle quantity-button">6</button>
                         <div class="form-group mt-3">
                           <label>Select seatings</label>
-                          <input id="add-seatings-gold" type="number" class="quantity bg-dark text-white" min="1" max="24" value="7">
+                          <input id="add-seatings-gold" type="number" class="quantity bg-dark text-white" min="1" max="24" value="6">
                         </div>
                       </div>
                       <table id="gold-seatings" class="table table-dark"></table>
@@ -133,7 +133,7 @@
                         <button class="btn button rounded-circle quantity-button">6</button>
                         <div class="form-group mt-3">
                           <label>Select seatings</label>
-                          <input id="add-seatings-silver" type="number" class="quantity bg-dark text-white" min="1" max="24" value="7">
+                          <input id="add-seatings-silver" type="number" class="quantity bg-dark text-white" min="1" max="24" value="6">
                         </div>
                       </div>
                       <table id="silver-seatings" class="table table-dark"></table>
@@ -161,7 +161,7 @@
                         <button class="btn button rounded-circle quantity-button">5</button>
                         <button class="btn button rounded-circle quantity-button">6</button>
                         <div class="form-group mt-3">Select seatings</label>
-                          <input id="add-seatings-bronze" type="number" class="quantity bg-dark text-white" min="1" max="24" value="7">
+                          <input id="add-seatings-bronze" type="number" class="quantity bg-dark text-white" min="1" max="24" value="6">
                         </div>
                       </div>
                       <table id="bronze-seatings" class="table table-dark"></table>
@@ -205,7 +205,19 @@
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="js/create-menu.js"></script>
     <script type="module" src="js/shows.js"></script>
-    <script>window.onload = () => createNav()</script>
+    <script>
+      window.onload = () => {
+        createNav()
+          //let date = window.location.search.match(/date=([^&]*)/)[1];
+          
+
+          //console.log('log ', window.location.search.match(/date=([^&]*)/)[1] !== null ? true : false);
+          //const params = new URLSearchParams(window.location.search);
+          /* window.location.search.match(/date=([^&]*)/)[1] !== null */ 
+          
+        
+      }
+      </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>

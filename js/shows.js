@@ -4,26 +4,55 @@ import { calendar } from './components/calendar.js';
 
 
 function addShows() {
-    shows.forEach(show => {
-        const list = $('#showList');
-        const template = document.getElementById('template-show-item');
-        const instance = document.importNode(template.content, true);
-        const category = categories.find(cat => cat.id == show.category);
-        console.log('category ', category.name);
-        $(instance).find('#title').text(show.title);
-        $(instance).find('#category').text(category.name);
-        //$(instance).find('#price').text(show.price + 'Kr');
-        $(instance).find('#description').text(show.description);
-        $(instance).find('#date').text(show.date + ' @ ' + show.time);
-        //$(instance).find('content').text(show.content);
-        $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
-        $(instance).find('#modal-button').attr('data-bs-id', show.id);
-        /* $(instance).find('#modal-button').click(() => {
-            console.log('clicker');
-            openModal();
-        }); */
-        list.append(instance);
-    });
+    let date = window.location.search.match(/date=([^&]*)/)[1];
+    console.log('date ', date);
+    if (date != null) {
+        let filteredShows = shows.filter(show => show.date == date);    
+        filteredShows.forEach(show => {
+            //$(".show-item").filter((index, card) => card.innerText.includes(date) ? card.style.display = "block" : card.style.display = "none");
+            const list = $('#showList');
+            const template = document.getElementById('template-show-item');
+            const instance = document.importNode(template.content, true);
+            const category = categories.find(cat => cat.id == show.category);
+            console.log('category ', category.name);
+            $(instance).find('#title').text(show.title);
+            $(instance).find('#category').text(category.name);
+            //$(instance).find('#price').text(show.price + 'Kr');
+            $(instance).find('#description').text(show.description);
+            $(instance).find('#date').text(show.date + ' @ ' + show.time);
+            //$(instance).find('content').text(show.content);
+            $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
+            $(instance).find('#modal-button').attr('data-bs-id', show.id);
+            /* $(instance).find('#modal-button').click(() => {
+                console.log('clicker');
+                openModal();
+            }); */
+            list.append(instance);
+        });
+    } else {
+
+        shows.forEach(show => {
+            //$(".show-item").filter((index, card) => card.innerText.includes(date) ? card.style.display = "block" : card.style.display = "none");
+            const list = $('#showList');
+            const template = document.getElementById('template-show-item');
+            const instance = document.importNode(template.content, true);
+            const category = categories.find(cat => cat.id == show.category);
+            console.log('category ', category.name);
+            $(instance).find('#title').text(show.title);
+            $(instance).find('#category').text(category.name);
+            //$(instance).find('#price').text(show.price + 'Kr');
+            $(instance).find('#description').text(show.description);
+            $(instance).find('#date').text(show.date + ' @ ' + show.time);
+            //$(instance).find('content').text(show.content);
+            $(instance).find('#thumb').attr('src', 'img/' + show.thumb);
+            $(instance).find('#modal-button').attr('data-bs-id', show.id);
+            /* $(instance).find('#modal-button').click(() => {
+                console.log('clicker');
+                openModal();
+            }); */
+            list.append(instance);
+        });
+    }
 }
 $(".quantity-button").click(() => {
     //console.log('button clicked ', event.target);
@@ -32,7 +61,7 @@ $(".quantity-button").click(() => {
     $("#add-seatings-" + category).val(event.target.innerText);
     $("#seatings-"+category+"-data").text(event.target.innerText);
     let total = $("#price-"+category).text() * event.target.innerText;
-    $("#total-"+category).text(total);  
+    $("#total-" + category).text(total.toFixed(2));  
 });
 
 $(".quantity").change(() => {
@@ -40,7 +69,7 @@ $(".quantity").change(() => {
     console.log('category ', category);
     $("#seatings-"+category+"-data").text(event.target.value);
     let total = $("#price-"+category).text() * event.target.value;
-    $("#total-"+category).text(total);  
+    $("#total-" + category).text(total.toFixed(2));  
     //booking.seatings = $("#seating-quantity").text(event.target.value);
     
 });
@@ -61,27 +90,27 @@ $(".booking-button").click((e) => {
             <tr>
                 
                 <th>Category</th>
-                
                 <th>Seatings</th>
-                <th>Price</th>
-                <th>Total</th>
+                <th>Price/Seat</th>
+                <th>Currency</th>
+                <th>Total price</th>
             </tr>    
         
         
         
             <tr>
                 
-                <td>${category}</td>
-                
+                <td>${category.charAt(0).toUpperCase() + category.slice(1)}</td>
                 <td id="seatings-${category}-data"></td>
-                <td id="price-${category}">${booking.price}</td>
+                <td id="price-${category}">${booking.price.toFixed(2)}</td>
+                <td>SEK</td>
                 <td id="total-${category}"></td>
             </tr>
         
         `);
     rows.appendTo(`#${category}-seatings`);
     //$("#seatings-"+category).append(table);
-    let removeCategoryButton = $('<button class="btn button rounded mt-2">Empty this category</button>').click((e) => {
+    let removeCategoryButton = $('<button class="btn btn-dark rounded mt-2">Empty this category</button>').click((e) => {
         //$(e.target).siblings('table').remove();
 
         $(`#${category}-seatings`).empty();
@@ -90,10 +119,10 @@ $(".booking-button").click((e) => {
         console.log('empty btn ', $(e.target));
         $("#seatings-" + category).addClass('d-none');
         $("#" + category).removeClass('d-none');
-        $("#add-seatings-" + category).val(7);
+        $("#add-seatings-" + category).val(6);
 
     })
-    $("#seatings-" + category).append(removeCategoryButton);
+    removeCategoryButton.insertAfter(`#${category}-seatings`);
 
 
 });
@@ -182,7 +211,7 @@ function categoriesAsTabs(categories) {
 
         const icon = $(c.icon).addClass("rounded-pill");
         icon.attr("width", "60");
-        console.log('name ', c.name);
+        //console.log('name ', c.name);
         const span = $('<p>'+c.name+'</p>');
         
         icon.appendTo(link);
@@ -224,6 +253,8 @@ var booking = {
 };
 
 $(document).ready(function() {
+    
+
     console.log('document loaded');
     addShows();
     categoriesAsTabs(categories)
