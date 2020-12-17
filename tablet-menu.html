@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tab menu</title>
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
+    <link href="css/tablet-menu.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/menu-items.js"></script>
+    <script type="text/javascript" src="js/tablet-menu.js"></script>
+
+    <template id="template-menu-item">
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a href="#" class="image">
+                        <img class="pic-1" id="itemImage" src="img/item1.jpg">
+                    </a>
+                    <div id="discount">
+                        <span class="product-discount-label">-33%</span>
+                    </div>
+                    <ul class="product-links">
+                        <li id="modal-link"><a href="#" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                    </ul>
+                </div>
+                <div class="product-content">
+                    <ul class="rating" id="stars">
+                    </ul>
+                    <h3 class="title" id="name"><a href="#">header</a></h3>
+                    <div class="price" id="price"><span>$90.00</span> $66.00</div>
+                    <div class="d-flex justify-content-center">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="quant"
+                                id="remove-from-cart">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </span>
+                        <div id="item-count-div">
+                            <label id="item-count">0</label>
+                        </div>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="quant"
+                                id="add-to-cart">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="template-cart-item">
+        <li class="list-group-item container-fluid">
+            <div class="row">
+                <div class="col-md-2"> <img id="itemImage" src="img/item1.jpeg" width="30px" height="30px"
+                        class="img-fluid  rounded-circle"></div>
+                <div class="col-md-4" id="itemName">asdf</div>
+                <div class="col-md-2" id="itemPrice">0</div>
+                <div class="col-md-4">
+                    <span class="badge bg-primary rounded-pill" id="itemCount">1</span>
+                </div>
+            </div>
+        </li>
+    </template>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 ml-auto col-xl-12 mr-auto">
+                <!-- Tabs with Background on Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs nav-tabs-neutral justify-content-center" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#main" role="tab"><i
+                                        class="fa fa-pizza-slice"></i> Main Course</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#veg" role="tab"><i
+                                        class="fas fa-carrot"></i> Vegiterian</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#drinks" role="tab"><i
+                                        class="fas fa-cocktail"></i> Drinks</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#child" role="tab"><i
+                                        class="fas fa-hotdog"></i> Child Menu</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-bs-toggle="tab" href="#total" role="tab"><i
+                                        class="fas fa-scroll"></i>
+                                    <span id="item-total">items(0)</span>
+                                    <br />
+                                    <span id="item-price">price 0kr</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content text-center">
+                            <div class="tab-pane active" id="main" role="tabpanel">
+                                <div class="row" id="main-cource-menu">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="veg" role="tabpanel">
+                                <div class="row" id="veg-cource-menu">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="drinks" role="tabpanel">
+                                <div class="row" id="drink-cource-menu">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="child" role="tabpanel">
+                                <div class="row" id="child-cource-menu"></div>
+                            </div>
+                            <div class="tab-pane" id="total" role="tabpanel">
+                                <div class="row" id="total-menu">
+                                    <h5 class="mt-5">Your order</h5>
+                                    <ul class="list-group mb-3" id="itemList">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center"
+                                            id="itemName">
+                                            <div>Empty</div>
+                                        </li>
+                                    </ul>
+                                    <div class="text-center"><button type="button" id="checkout-button"
+                                            class="btn btn-primary invisible button" onclick="doCheckout()">Place the
+                                            order</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Tabs on plain Card -->
+            <!-- Modal -->
+            <div class="modal fade" id="show-item" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="card-title" id="modal-name">Chinese Noodles</h5>
+                            <button type="button" class="btn-close" data-mdb-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="modal-body-item">
+                            <div class="col shadow p-3 bg-white rounded menu-item">
+                                <div class="card mb-3">
+                                  <div class="row g-0">
+                                    <div class="col-md-4">
+                                      <img id="modal-itemImage" src="img/item1.jpeg" class="img-fluid rounded custom-menu-image">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <div class="row">
+                                          <div class="col-md-10">
+                                            <p class="align-self-center ingredients fst-italic" id="modal-content">Chicken, nudles, chili, green onions,
+                                              garlic</p>
+                                          </div>
+                                          <div class="col-md-2">
+                                            <h6 class="text-end" id="modal-price">250Kr</h6>
+                                          </div>
+                                        </div>
+                                        <p class="card-text" id="modal-info">Chinese noodles with chicken and green vegitables made with soya and tomato
+                                          sause.</p>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            <p class="card-text"><small class="text-muted" id="modal-stars"></small>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>
