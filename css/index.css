@@ -186,3 +186,7 @@ margin-top: 7rem;
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.cursor{
+  cursor: pointer;
+}
