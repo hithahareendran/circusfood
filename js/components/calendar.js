@@ -64,7 +64,7 @@ export function calendar(year = null, month = null) {
     
     //$("#calendar").append(fragment);
 }
-function filterShowsByDate(date) {
+export function filterShowsByDate(date) {
     $(".show-item").map((index, card) => {
         //console.log('show ', card);
         card.innerText.includes(date) ? card.style.display = "block" : card.style.display = "none";
