@@ -235,9 +235,15 @@ $(document).ready(function() {
 // window.onload = () => {
 //     let date = window.location.search.match(/date=([^&]*)/)[1];
 //     let showItems = document.getElementsByClassName("show-item");
-//     forEach(item in showItems)
-//     {
-//         console.log(item.innerText);
-//     }
+//     console.log("inner",showItems.length);
+//     for (let i = 0; i < showItems.length; i++) {
+//         console.log("inner",showItems[i].innerText);
+//         if( showItems[i].innerText.includes(date))
+//         {
+            
+//             showItems[i].style.display = "none";
+//         }
+            
+//       }
     
 // }
