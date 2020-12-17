@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/added.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>The Food Circus</title>
   </head>
@@ -19,22 +21,27 @@
           <div class="row g-0">
             <div class="col-md-4 flex-column p-3">
               <img id="thumb" class="img-fluid rounded">
-              <p id="date"></p>
+              
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title" id="title"></h5><span class="float-right" id="category"></span>
-                  <div class="row">
-                    <div class="col-md-10">
+                <div class="d-flex justify-content-between">
+                  <h5 class="card-title" id="title"></h5>
+                  <span id="date"></span>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-md-10">
+                      <span class="fst-italic" id="category"></span>
                       <p class="card-text" id="description"></p>
                     </div>
                     <div class="col-md-2">
                       <button id="modal-button"
-                        class="btn btn-outline-info btn-lg rounded-circle" 
+                        class="btn button rounded-circle" 
                         data-bs-toggle="modal" 
                         data-bs-target="#showModal"
                         data-bs-id="">
-                        <i class="fas fa-plus-circle fa-lg"></i>
+                        <i class="fas fa-plus fa-lg"></i>
                       </button>
                     </div>
                   </div>
@@ -57,7 +64,7 @@
       <h1 class="text-center mb-4">Shows</h1>
       <div class="row">
         <div class="col-md-3">
-          <div id="calendar"></div>
+          <div id="calendar" class="bg-info rounded p-3 mt-3"></div>
           <ul class="nav flex-column" id="categoryList"></ul>
           <div id="categories"></div>
         </div>
@@ -75,7 +82,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="showModalLabel">Book your show here</h5>
+            <h5 class="modal-title" id="showModalLabel">Book your seats!</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -88,25 +95,28 @@
                     
                     <div class="card shadow mb-3 show-card">
                       <div class="card-body d-none" id="seatings-gold">
-                        <button class="btn btn-outline-info rounded-circle quantity-button">1</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">2</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">3</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">4</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">5</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">6</button>
-                        <div class="form-group">
-                          <label>Choose quantity</label>
-                          <input id="add-seatings-gold" type="number" class="quantity" min="1" max="24" value="7">
+                        <button class="btn button rounded-circle quantity-button">1</button>
+                        <button class="btn button rounded-circle quantity-button">2</button>
+                        <button class="btn button rounded-circle quantity-button">3</button>
+                        <button class="btn button rounded-circle quantity-button">4</button>
+                        <button class="btn button rounded-circle quantity-button">5</button>
+                        <button class="btn button rounded-circle quantity-button">6</button>
+                        <div class="form-group mt-3">
+                          <label>Select seatings</label>
+                          <input id="add-seatings-gold" type="number" class="quantity bg-dark text-white" min="1" max="24" value="7">
                         </div>
                       </div>
+                      <table id="gold-seatings" class="table table-dark"></table>
                       <div id="gold">
-                        <h5 class="card-title">Gold</h5>
-                        <p>895 Kr</p>
+                        <div class="d-flex justify-content-between">
+                          <h5 class="card-title">Gold</h5>
+                          <span id="gold-price"></span>
+                        </div>
                         <div class="card-body">
                           <p>Seats with a clear view of the stage (no cinema seating so you may have to turn around)</p>
                           <div class="d-flex justify-content-between">
                             <h3><span class="badge bg-success rounded-pill">Available</span></h3>
-                            <button class="btn btn-success rounded-circle booking-button" data-category="gold" data-id>Book</button>
+                            <button class="button rounded-circle booking-button" data-category="gold" data-id>Book</button>
                           </div>
                         </div>
 
@@ -115,52 +125,70 @@
                     
                     <div class="card shadow mb-3 show-card">
                       <div class="card-body d-none" id="seatings-silver">
-                        <button class="btn btn-outline-info rounded-circle quantity-button">1</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">2</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">3</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">4</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">5</button>
-                        <button class="btn btn-outline-info rounded-circle quantity-button">6</button>
-                        <div class="form-group">
-                          <label>Choose quantity</label>
-                          <input id="add-seatings-silver" type="number" class="quantity" min="1" max="24" value="7">
+                        <button class="btn button rounded-circle quantity-button">1</button>
+                        <button class="btn button rounded-circle quantity-button">2</button>
+                        <button class="btn button rounded-circle quantity-button">3</button>
+                        <button class="btn button rounded-circle quantity-button">4</button>
+                        <button class="btn button rounded-circle quantity-button">5</button>
+                        <button class="btn button rounded-circle quantity-button">6</button>
+                        <div class="form-group mt-3">
+                          <label>Select seatings</label>
+                          <input id="add-seatings-silver" type="number" class="quantity bg-dark text-white" min="1" max="24" value="7">
                         </div>
                       </div>
+                      <table id="silver-seatings" class="table table-dark"></table>
                       <div id="silver">
-
-                        <h5 class="card-title">Silver</h5>
-                        <p>795 Kr</p>
+                        <div class="d-flex justify-content-between">
+                          <h5 class="card-title">Silver</h5>
+                          <span id="silver-price"></span>
+                        </div>
                         <div class="card-body">
                           <p>Places with a partially obscured view of the stage</p>
                           <div class="d-flex justify-content-between">
   
                             <h3><span class="badge bg-success rounded-pill">Available</span></h3>
-                            <button class="btn btn-success rounded-circle booking-button" data-category="silver" data-id>Book</button>
+                            <button class="button rounded-circle booking-button" data-category="silver" data-id>Book</button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="card shadow mb-3 show-card">
+                      <div class="card-body d-none" id="seatings-bronze">
+                        <button class="btn button rounded-circle quantity-button">1</button>
+                        <button class="btn button rounded-circle quantity-button">2</button>
+                        <button class="btn button rounded-circle quantity-button">3</button>
+                        <button class="btn button rounded-circle quantity-button">4</button>
+                        <button class="btn button rounded-circle quantity-button">5</button>
+                        <button class="btn button rounded-circle quantity-button">6</button>
+                        <div class="form-group mt-3">Select seatings</label>
+                          <input id="add-seatings-bronze" type="number" class="quantity bg-dark text-white" min="1" max="24" value="7">
+                        </div>
+                      </div>
+                      <table id="bronze-seatings" class="table table-dark"></table>
                       <div id="bronze">
-                        <h5 class="card-title">Bronze</h5>
-                        <p>595 Kr</p>
+                        <div class="d-flex justify-content-between">
+                          <h5 class="card-title">Bronze</h5>
+                          <span id="bronze-price"></span>
+                        </div>
                         <div class="card-body">
-                          <p>Places with obscured view to the stage</p>
+                          <p>Places with a partially obscured view of the stage</p>
                           <div class="d-flex justify-content-between">
+                    
                             <h3><span class="badge bg-success rounded-pill">Available</span></h3>
-                            <button class="btn btn-success rounded-circle booking-button" data-category="bronze" data-id>Book</button>
+                            <button class="button rounded-circle booking-button" data-category="bronze" data-id>Book</button>
                           </div>
                         </div>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
                 </div>
               </div>  
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" id="go-to-payment" class="btn btn-primary">Book</button>
+            <div class="modal-footer d-flex justify-content-between">
+              <a href="menu.html" type="button" class="btn button go-to-payment">Add a menu</a>
+              <a href="payment.html" type="button"  class="btn button go-to-payment">Book and go to payment</a>
             </div>
           </div>
           </div>
