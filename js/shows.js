@@ -32,7 +32,7 @@ $(".quantity-button").click(() => {
     $("#add-seatings-" + category).val(event.target.innerText);
     $("#seatings-"+category+"-data").text(event.target.innerText);
     let total = $("#price-"+category).text() * event.target.innerText;
-    $("#total-"+category).text(total);  
+    $("#total-" + category).text(total.toFixed(2));  
 });
 
 $(".quantity").change(() => {
@@ -40,7 +40,7 @@ $(".quantity").change(() => {
     console.log('category ', category);
     $("#seatings-"+category+"-data").text(event.target.value);
     let total = $("#price-"+category).text() * event.target.value;
-    $("#total-"+category).text(total);  
+    $("#total-" + category).text(total.toFixed(2));  
     //booking.seatings = $("#seating-quantity").text(event.target.value);
     
 });
@@ -61,27 +61,27 @@ $(".booking-button").click((e) => {
             <tr>
                 
                 <th>Category</th>
-                
                 <th>Seatings</th>
-                <th>Price</th>
-                <th>Total</th>
+                <th>Price/Seat</th>
+                <th>Currency</th>
+                <th>Total price</th>
             </tr>    
         
         
         
             <tr>
                 
-                <td>${category}</td>
-                
+                <td>${category.charAt(0).toUpperCase() + category.slice(1)}</td>
                 <td id="seatings-${category}-data"></td>
-                <td id="price-${category}">${booking.price}</td>
+                <td id="price-${category}">${booking.price.toFixed(2)}</td>
+                <td>SEK</td>
                 <td id="total-${category}"></td>
             </tr>
         
         `);
     rows.appendTo(`#${category}-seatings`);
     //$("#seatings-"+category).append(table);
-    let removeCategoryButton = $('<button class="btn button rounded mt-2">Empty this category</button>').click((e) => {
+    let removeCategoryButton = $('<button class="btn btn-dark rounded mt-2">Empty this category</button>').click((e) => {
         //$(e.target).siblings('table').remove();
 
         $(`#${category}-seatings`).empty();
@@ -90,10 +90,10 @@ $(".booking-button").click((e) => {
         console.log('empty btn ', $(e.target));
         $("#seatings-" + category).addClass('d-none');
         $("#" + category).removeClass('d-none');
-        $("#add-seatings-" + category).val(7);
+        $("#add-seatings-" + category).val(6);
 
     })
-    $("#seatings-" + category).append(removeCategoryButton);
+    removeCategoryButton.insertAfter(`#${category}-seatings`);
 
 
 });
