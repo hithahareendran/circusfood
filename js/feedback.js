@@ -19,14 +19,14 @@ function submitfeedback() {
     let feedback = {};
     feedback.name = document.getElementById("name").value;
     feedback.foodquality = document.getElementById("excellentfood").checked ? "excellent" :
-        document.getElementById("goodfood").checked ? "good" :
-        document.getElementById("averagefood").checked ? "average" : "Dissatisfied";
+        document.getElementById("goodfood").checked ? "Good" :
+        document.getElementById("averagefood").checked ? "Average" : "Dissatisfied";
     feedback.showquality = document.getElementById("excellentshow").checked ? "excellent" :
-        document.getElementById("goodshow").checked ? "good" :
-        document.getElementById("averageshow").checked ? "average" : "Dissatisfied";
-    feedback.overall = document.getElementById("excellent").checked ? "excellent" :
-        document.getElementById("good").checked ? "good" :
-        document.getElementById("average").checked ? "average" : "Dissatisfied";
+        document.getElementById("goodshow").checked ? "Good" :
+        document.getElementById("averageshow").checked ? "Average" : "Dissatisfied";
+    feedback.overall = document.getElementById("Excellent").checked ? "Excellent" :
+        document.getElementById("Good").checked ? "Good" :
+        document.getElementById("Average").checked ? "Average" : "Dissatisfied";
     feedback.comments = document.getElementById("comments").value;
 
     localStorage.setItem("feedback", JSON.stringify(feedback));
