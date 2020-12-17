@@ -78,3 +78,8 @@
     border-radius: 30px;
     color: #FFFFFF;
 }
+
+/* aditional self */
+.cursor{
+    cursor: pointer;
+}
