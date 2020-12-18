@@ -178,7 +178,7 @@ function createAndShowModelPopup() {
 
 function checkoutComplete() {
   document.getElementById("payment-form").reset();
-  window.location.assign("/index.html");
+  window.location.assign("/feedback.html");
 }
 
 /*https://www.pepipost.com/tutorials/how-to-send-emails-with-javascript/ */
