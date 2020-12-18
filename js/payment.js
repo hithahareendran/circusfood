@@ -66,7 +66,7 @@ function initializeCart() {
   });
 
   //if the cart has any item add the table to the html cart/popup
-  if (selected.length > 0 || bookings!==null) {
+  if (selected.length > 0 || booking !==null) {
     document.getElementById('checkout-cart-popup').appendChild(cartTable.cloneNode(true));
     document.getElementById('checkout-cart').appendChild(cartTable);
     document.querySelectorAll('#grand-total').forEach(i => i.innerHTML = total + 'kr');
