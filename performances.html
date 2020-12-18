@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/added.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <title>The Food Circus</title>
+    <title>The Circus Restaurant</title>
   </head>
   <body>
     <!-- template  -->
@@ -21,14 +21,12 @@
           <div class="row g-0">
             <div class="col-md-4 flex-column p-3">
               <img id="thumb" class="img-fluid rounded">
-              
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <div class="d-flex justify-content-between">
                   <h5 class="card-title" id="title"></h5>
                   <span id="date"></span>
-                  
                 </div>
                 <div class="row">
                   <div class="col-md-10">
@@ -58,22 +56,17 @@
         <a id="link" class="nav-link" aria-current="page" href="#"></a>
       </li>
     </template>
-    
     <!-- Image and text -->
     <div class="container">
-      <h1 class="text-center mb-4">Shows</h1>
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-xl-3">
           <div id="calendar" class="bg-info rounded p-3 mt-3"></div>
+          <div id="category-links"></div>
           <ul class="nav flex-column" id="categoryList"></ul>
           <div id="categories"></div>
         </div>
-          
-        <div class="col-md-9">
-            
+        <div class="col-xl-9">
           <div id="showList"></div>
-          
-        
         </div>
 
     
@@ -89,10 +82,8 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="alert alert-light" role="alert"></div>
-                
                 <div class="col">
                   <div class="row">
-                    
                     <div class="card shadow mb-3 show-card">
                       <div class="card-body d-none" id="seatings-gold">
                         <button class="btn button rounded-circle quantity-button">1</button>
@@ -106,7 +97,9 @@
                           <input id="add-seatings-gold" type="number" class="quantity bg-dark text-white" min="1" max="24" value="6">
                         </div>
                       </div>
-                      <table id="gold-seatings" class="table table-dark"></table>
+                      <div class="table-responsive">
+                        <table id="gold-seatings" class="table table-dark"></table>
+                      </div>
                       <div id="gold">
                         <div class="d-flex justify-content-between">
                           <h5 class="card-title">Gold</h5>
@@ -136,7 +129,9 @@
                           <input id="add-seatings-silver" type="number" class="quantity bg-dark text-white" min="1" max="24" value="6">
                         </div>
                       </div>
-                      <table id="silver-seatings" class="table table-dark"></table>
+                      <div class="table-responsive">
+                        <table id="silver-seatings" class="table table-dark"></table>
+                      </div>
                       <div id="silver">
                         <div class="d-flex justify-content-between">
                           <h5 class="card-title">Silver</h5>
@@ -164,7 +159,9 @@
                           <input id="add-seatings-bronze" type="number" class="quantity bg-dark text-white" min="1" max="24" value="6">
                         </div>
                       </div>
-                      <table id="bronze-seatings" class="table table-dark"></table>
+                      <div class="table-responsive">
+                        <table id="bronze-seatings" class="table table-dark"></table>
+                      </div>
                       <div id="bronze">
                         <div class="d-flex justify-content-between">
                           <h5 class="card-title">Bronze</h5>

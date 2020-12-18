@@ -10,7 +10,7 @@ export function calendar(year = null, month = null) {
     let daysInMonth = getDaysInMonth(date.getFullYear(), date.getMonth() + 1);
     //console.log('days in month ', daysInMonth);
     let fragment = document.createDocumentFragment();
-    let table = $("<table>").addClass("table");
+    let table = $("<table id='show-calendar'>").addClass("table");
     let caption = $("<caption class='caption-top text-center'>");
     let dateYear = `<span> ${months[date.getMonth()]} ${date.getFullYear()} </span>`;
     let prevMonth = $('<button class="btn btn-sm text-white rounded-circle change-month"><i class="fas fa-arrow-left fa-lg"></i>');
@@ -43,16 +43,16 @@ export function calendar(year = null, month = null) {
         
         if (i % 7 == 1 || i == 1) 
             $("<tr class='text-center'>").appendTo(table);            
-            
+        
         if (i < dayInWeek )
-            $("<td>").appendTo($('tr').last());
+            $("<td>").appendTo($('#show-calendar tr:last'));//.last());
         else 
-            $("<td>" + (i + 1 - dayInWeek) + "</td>").appendTo($('tr').last());
+            $("<td>" + (i + 1 - dayInWeek) + "</td>").appendTo($('#show-calendar  tr:last'));//.last());
     }
     for (let i = 0; i < daysInMonth + dayInWeek; i++) {
         if (dates.includes(getDateString(date, i))) {
             
-            $("td").filter(function(){
+            $("#show-calendar td").filter(function(){
                 return parseInt($(this).text()) == i; 
                 
             }).addClass("bg-info text-white border-2 show-date").click(function() {
@@ -66,9 +66,9 @@ export function calendar(year = null, month = null) {
 }
 export function filterShowsByDate(date) {
     $(".show-item").map((index, card) => {
-        //console.log('show ', card);
         card.innerText.includes(date) ? card.style.display = "block" : card.style.display = "none";
     })
+    $("#categories .nav-link").removeClass('active');
     console.log('filter date: ', date);
 }
 const getDaysInMonth = function (year, month) {

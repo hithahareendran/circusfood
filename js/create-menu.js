@@ -1,14 +1,11 @@
 function createNav() {
     //console.log("createing nav");
     let fragment = document.createDocumentFragment();
-    let nav = $("<nav>");
-    nav.addClass("navbar navbar-dark bg-dark navbar-expand-md");
-    let brand = $("<a>");
-    brand.addClass("navbar-brand");
-    brand.attr("href", "index.html");
-    let brandImg = $("<img>");
-    brandImg.addClass("d-inline-block align-top");
-    brandImg.attr({ "src": "img/logo2.jpeg", "width":"80"});
+    let nav = $("<nav>")
+    .addClass("navbar navbar-dark bg-dark navbar-expand-md")
+    
+    let brand = $("<a>").addClass("navbar-brand").attr("href", "index.html");
+    let brandImg = $("<img>").addClass("d-inline-block align-top").attr({ "src": "img/logo2.jpeg", "width":"80"});
 
     let navbarToggler = $("<button>").addClass("navbar-toggler");
     
@@ -21,8 +18,9 @@ function createNav() {
         "aria-label":"Toggle navigation"
     });
     navbarToggler.append('<span class="navbar-toggler-icon"></span>');
-    let navbarSupportedContent = $("<div>").addClass("collapse navbar-collapse")
-    navbarSupportedContent.attr("id", "navbarSupportedContent");
+    let navbarSupportedContent = $("<div>")
+    .addClass("collapse navbar-collapse")
+    .attr("id", "navbarSupportedContent");
     let ul = $("<ul>").addClass("navbar-nav me-auto mb-2 mb-lg-0")
     const links = {
         "Home":"index.html", 
@@ -42,19 +40,16 @@ function createNav() {
         let li = $('<li>').addClass("nav-item");
         let link = $('<a>').addClass("nav-link");
         
-        link.attr({"href":value, "aria-current": "page"});
-        link.text(key)
+        link.attr({"href":value, "aria-current": "page"}).text(key)
         if (navLink == value) {
             link.addClass("active");
-            console.log('link ', link);
         } 
-    
         link.appendTo(li);
         li.appendTo(ul);
     }
 
     // adding cart to nav bar
-    let cart =  $('<div>').addClass("navbar-collapse collapse d-flex  justify-content-end")
+    let cart =  $('<div>').addClass("navbar-collapse collapse d-flex justify-content-end")
     .append($('<ul>').addClass("navbar-nav ml-auto mb-2 mb-lg-0")
         .append($('<li>').addClass("nav-item")
             .append($('<a>').addClass("nav-link").attr('href','payment.html')
@@ -109,7 +104,7 @@ function refreshMenuCart()
     if(total!==0)
     {
         document.getElementById("item-total").innerHTML = " items("+totalCount+")";
-        document.getElementById("item-price").innerHTML = "price "+total+"kr";
+        document.getElementById("item-price").innerHTML = "SEK "+total.toFixed(2);
         
     }
    
