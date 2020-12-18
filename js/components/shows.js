@@ -3,7 +3,7 @@ export var shows = [
         id: "1", 
         date: '2021-02-05',
         time: '6:20 PM', 
-        title: 'Amazing show', 
+        title: 'Amazing show test', 
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.', 
         image: '', 
         thumb: 'circus1_small.jpg', 
@@ -43,7 +43,7 @@ export var shows = [
         gold: 895,
         silver: 795,
         bronze: 595, 
-        category: 1, 
+        category: 3, 
         artist: "",
         available: 0
     },
@@ -59,7 +59,7 @@ export var shows = [
         gold: 895,
         silver: 795,
         bronze: 595, 
-        category: 3, 
+        category: 1, 
         artist: "" 
     },
     { 
@@ -74,7 +74,7 @@ export var shows = [
         gold: 895,
         silver: 795,
         bronze: 595,
-        category: 3,
+        category: 2,
         artist: "" 
     },
     { 
@@ -104,7 +104,7 @@ export var shows = [
         gold: 895,
         silver: 795,
         bronze: 595, 
-        category: 4, 
+        category: 1, 
         artist: "" 
     },
     { 
@@ -119,7 +119,7 @@ export var shows = [
         gold: 895,
         silver: 795,
         bronze: 595, 
-        category: 4, 
+        category: 2, 
         artist: "" 
     },
     {
@@ -134,7 +134,7 @@ export var shows = [
         gold: 895,
         silver: 795,
         bronze: 595,
-        category: 4,
+        category: 2,
         artist: ""
     },
     {
@@ -149,109 +149,14 @@ export var shows = [
         gold: 895,
         silver: 795,
         bronze: 595,
-        category: 4,
+        category: 3,
         artist: ""
     },
-    {
-        id: "11",
-        date: '2021-03-26',
-        time: '6:20 PM',
-        title: 'Show name',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
-        image: '',
-        thumb: 'circus2_small.jpg',
-        rating: 5,
-        gold: 895,
-        silver: 795,
-        bronze: 595,
-        category: 4,
-        artist: ""
-    },
-    {
-        id: "12",
-        date: '2021-06-05',
-        time: '6:20 PM',
-        title: 'Show name',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
-        image: '',
-        thumb: 'circus2_small.jpg',
-        rating: 5,
-        gold: 895,
-        silver: 795,
-        bronze: 595,
-        category: 4,
-        artist: ""
-    },
-
-    {
-        id: "13",
-        date: '2021-06-04',
-        time: '6:20 PM',
-        title: 'Show name',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
-        image: '',
-        thumb: 'circus2_small.jpg',
-        rating: 5,
-        gold: 895,
-        silver: 795,
-        bronze: 595,
-        category: 4,
-        artist: ""
-    },
-    {
-        id: "14",
-        date: '2022-01-11',
-        time: '6:20 PM',
-        title: 'Show name',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
-        image: '',
-        thumb: 'circus2_small.jpg',
-        rating: 5,
-        gold: 895,
-        silver: 795,
-        bronze: 595,
-        category: 4,
-        artist: ""
-    },
-    {
-        id: "15",
-        date: '2023-01-17',
-        time: '6:20 PM',
-        title: 'Show name',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum ipsum beatae autem ut amet possimus neque commodi suscipit, nostrum temporibus vitae. Libero facilis fuga, temporibus nulla odit accusantium porro repudiandae.',
-        image: '',
-        thumb: 'circus2_small.jpg',
-        rating: 5,
-        gold: 895,
-        silver: 795,
-        bronze: 595,
-        category: 4,
-        artist: ""
-    }
     
 
 ];
 export const categories = [
-    { id: 1, name: 'Burlesque', icon: '<img src="img/circus1_small.jpg"/>', slug:'burlesque' },
-    { id: 2, name: 'Contemporary Circus', icon: '<img src="img/circus1_small.jpg"/>', slug:'contemporary' },
-    { id: 3, name: 'Aerial Dance', icon: '<img src="img/circus1_small.jpg"/>', slug:"aerial-dance"},
-    { id: 4, name: 'Corde Lisse', icon: '<img src="img/circus1_small.jpg"/>', slug: 'corde-lisse' },
-    { id: 5, name: 'Cradle', icon: '<img src="img/circus1_small.jpg"/>', slug: 'cradle' },
-    { id: 6, name: 'Lyra', icon: '<img src="img/circus1_small.jpg"/>', slug: 'lyra' },
-    { id: 7, name: 'Cloud Swing', icon: '<img src="img/circus1_small.jpg"/>', slug: 'cloud-swing' },
-    { id: 8, name: 'Aerial Net', icon: '<img src="img/circus1_small.jpg"/>', slug: 'aerial-net' },
-    { id: 9, name: 'Double Trapeze', icon: '<img src="img/circus1_small.jpg"/>', slug: 'double-trapeze' },
-    { id: 10, name: 'Silks', icon: '<img src="img/circus1_small.jpg"/>', slug: 'silks' },
-    { id: 10, name: 'Bicycling', icon: '<img src="img/circus1_small.jpg"/>', slug: 'bicycling' },
-    { id: 10, name: 'Clown', icon: '<img src="img/circus1_small.jpg"/>', slug: 'clown' },
-    { id: 10, name: 'Character', icon: '<img src="img/circus1_small.jpg"/>', slug: 'character' },
-    { id: 10, name: 'Dance', icon: '<img src="img/circus1_small.jpg"/>', slug: 'dance' },
-    { id: 10, name: 'Pole', icon: '<img src="img/circus1_small.jpg"/>', slug: 'pole' },
-    { id: 10, name: 'Acrobalance', icon: '<img src="img/circus1_small.jpg"/>', slug: 'acrobalance'},
-    { id: 10, name: 'Hula Hoops', icon: '<img src="img/circus1_small.jpg"/>', slug: 'hula-hoops' },
-    { id: 10, name: 'Acrobatics', icon: '<img src="img/circus1_small.jpg"/>', slug: 'acrobatics' }
-    
-    
-    
+    { id: 1, name: 'CONTEMPORARY', icon: '<img src="img/circus1_small.jpg"/>', slug:'contemporary' },
+    { id: 2, name: 'AERIAL', icon: '<img src="img/circus1_small.jpg"/>', slug:"aerial"},
+    { id: 3, name: 'CHARACTER', icon: '<img src="img/circus1_small.jpg"/>', slug: 'character'}
 ];
-//export categories; 
